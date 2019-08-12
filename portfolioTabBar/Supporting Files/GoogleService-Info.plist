@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>385853909403-p830f3om7g7sbr7hgde5vt8qp79069l7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.385853909403-p830f3om7g7sbr7hgde5vt8qp79069l7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBVBojwnlKK1_o-SFYk8QXfAm1YFLHh7rk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>385853909403</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.gs.portfolioTabBar</string>
+	<key>PROJECT_ID</key>
+	<string>portfolio-51347</string>
+	<key>STORAGE_BUCKET</key>
+	<string>portfolio-51347.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:385853909403:ios:35b59744750885cd</string>
+	<key>DATABASE_URL</key>
+	<string>https://portfolio-51347.firebaseio.com</string>
+</dict>
+</plist>
