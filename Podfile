@@ -11,6 +11,8 @@ target 'portfolioTabBar' do
   pod 'Firebase/Storage'
   pod 'Toast-Swift'
   pod 'MXSegmentedPager'
+  pod 'GoogleSignIn'
+
   # Pods for portfolioTabBar
 
 end

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3A89CEE7F3677ED2B1D186D9 /* Pods_portfolioTabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1720798AF6E25767EAF630 /* Pods_portfolioTabBar.framework */; };
 		7F50C59623010336003753EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F50C59523010336003753EB /* GoogleService-Info.plist */; };
+		7F50C59823011742003753EB /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F50C59723011742003753EB /* KakaoOpenSDK.framework */; };
+		7F50C59D230132B4003753EB /* kakaolink_btn_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F50C59C230132B4003753EB /* kakaolink_btn_small.png */; };
+		7F50C59F23013736003753EB /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F50C59723011742003753EB /* KakaoOpenSDK.framework */; };
+		7F50C5A023013736003753EB /* KakaoOpenSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F50C59723011742003753EB /* KakaoOpenSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE00B99922F90DA30007C90C /* SDMiSaeng.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CECF88C522DEC21D00E1E06C /* SDMiSaeng.ttf */; };
 		CE14BDAD22E2BF8100F205A6 /* MenteeSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE14BDAC22E2BF8100F205A6 /* MenteeSignUpController.swift */; };
 		CE1590E822FD063A005F2337 /* attach.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1590E222FD0639005F2337 /* attach.png */; };
@@ -75,10 +79,26 @@
 		CEF41CC022EAF01100635530 /* CareerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41CBF22EAF01100635530 /* CareerViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7F50C5A123013737003753EB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7F50C5A023013736003753EB /* KakaoOpenSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		25732F72292472A00318EB15 /* Pods-portfolioTabBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portfolioTabBar.release.xcconfig"; path = "Target Support Files/Pods-portfolioTabBar/Pods-portfolioTabBar.release.xcconfig"; sourceTree = "<group>"; };
 		5A888E9AD83618E659E31EEB /* Pods-portfolioTabBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portfolioTabBar.debug.xcconfig"; path = "Target Support Files/Pods-portfolioTabBar/Pods-portfolioTabBar.debug.xcconfig"; sourceTree = "<group>"; };
 		7F50C59523010336003753EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7F50C59723011742003753EB /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		7F50C59C230132B4003753EB /* kakaolink_btn_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakaolink_btn_small.png; sourceTree = "<group>"; };
 		CD1720798AF6E25767EAF630 /* Pods_portfolioTabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_portfolioTabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE14BDAC22E2BF8100F205A6 /* MenteeSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteeSignUpController.swift; sourceTree = "<group>"; };
 		CE1590E222FD0639005F2337 /* attach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach.png; sourceTree = "<group>"; };
@@ -154,6 +174,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A89CEE7F3677ED2B1D186D9 /* Pods_portfolioTabBar.framework in Frameworks */,
+				7F50C59823011742003753EB /* KakaoOpenSDK.framework in Frameworks */,
+				7F50C59F23013736003753EB /* KakaoOpenSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +185,7 @@
 		9B78F9BA567FC3F88956CA1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F50C59723011742003753EB /* KakaoOpenSDK.framework */,
 				CD1720798AF6E25767EAF630 /* Pods_portfolioTabBar.framework */,
 			);
 			name = Frameworks;
@@ -287,6 +310,7 @@
 		CECF88B822DEBA4200E1E06C /* attached files */ = {
 			isa = PBXGroup;
 			children = (
+				7F50C59C230132B4003753EB /* kakaolink_btn_small.png */,
 				CE1590F422FD39EF005F2337 /* poster.jpg */,
 				CE1590E722FD063A005F2337 /* add.png */,
 				CE1590E222FD0639005F2337 /* attach.png */,
@@ -360,6 +384,8 @@
 				CECF889822DEB51B00E1E06C /* Frameworks */,
 				CECF889922DEB51B00E1E06C /* Resources */,
 				D7221ECD9CFE3F11C39B29FD /* [CP] Embed Pods Frameworks */,
+				D7155A20043B2C17729B4B34 /* [CP] Copy Pods Resources */,
+				7F50C5A123013737003753EB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -378,7 +404,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
-				ORGANIZATIONNAME = Loho;
+				ORGANIZATIONNAME = gs;
 				TargetAttributes = {
 					CECF889A22DEB51B00E1E06C = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -422,6 +448,7 @@
 				CECDBC1922FBF7520068CBF1 /* search.png in Resources */,
 				CECF88A422DEB51B00E1E06C /* Main.storyboard in Resources */,
 				CE1590EA22FD063A005F2337 /* exit.png in Resources */,
+				7F50C59D230132B4003753EB /* kakaolink_btn_small.png in Resources */,
 				CECF88C422DEC00F00E1E06C /* splash.png in Resources */,
 				CECDBC1622FBF7520068CBF1 /* setting.png in Resources */,
 				CECDBC1822FBF7520068CBF1 /* filter.png in Resources */,
@@ -461,6 +488,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7155A20043B2C17729B4B34 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-portfolioTabBar/Pods-portfolioTabBar-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-portfolioTabBar/Pods-portfolioTabBar-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-portfolioTabBar/Pods-portfolioTabBar-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D7221ECD9CFE3F11C39B29FD /* [CP] Embed Pods Frameworks */ = {
@@ -680,13 +724,79 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/portfolioTabBar/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"FIRAnalyticsConnector\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"HMSegmentedControl\"",
+					"-framework",
+					"\"MXPagerView\"",
+					"-framework",
+					"\"MXParallaxHeader\"",
+					"-framework",
+					"\"MXSegmentedPager\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"Toast_Swift\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gs.portfolioTabBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -698,13 +808,79 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/portfolioTabBar/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"FIRAnalyticsConnector\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"HMSegmentedControl\"",
+					"-framework",
+					"\"MXPagerView\"",
+					"-framework",
+					"\"MXParallaxHeader\"",
+					"-framework",
+					"\"MXSegmentedPager\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"Toast_Swift\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gs.portfolioTabBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

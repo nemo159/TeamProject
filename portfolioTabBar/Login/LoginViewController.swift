@@ -8,16 +8,24 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
+import KakaoOpenSDK
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInUIDelegate {
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var pwTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
+    @IBOutlet weak var btnGoogleSignIn: GIDSignInButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        GIDSignIn.sharedInstance().uiDelegate = self
+//    }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         Auth.auth().signIn(withEmail: emailTextField.text!, password: pwTextField.text!) { (user, error) in
@@ -30,6 +38,26 @@ class LoginViewController: UIViewController {
             }
         }
         
+    }
+    
+    //Kakaotalk Login Button Action Add
+    @IBAction func kakaotalkLogin(_ sender: KOLoginButton) {
+        KOSession.shared()?.open(completionHandler: {(error) in
+            if error != nil || !(KOSession.shared()?.isOpen())! {
+                self.presentHomeController()
+                return
+            }
+        })
+    }
+    
+    //Kakaotalk Login 완료 시 화면이동
+    private func presentHomeController() {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "homeVC") as UIViewController
+            
+            self.present(controller, animated: true, completion: nil)
+        }
     }
     
     @IBAction func myExit(_ sender: UIStoryboardSegue) {
