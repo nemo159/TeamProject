@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
-class SettingController: UIViewController {
+class SettingController: UIViewController, GIDSignInUIDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class SettingController: UIViewController {
         } catch let err {
             print("Failed to sign out:", err)
         }
+        GIDSignIn.sharedInstance().signOut()
     }
     
     

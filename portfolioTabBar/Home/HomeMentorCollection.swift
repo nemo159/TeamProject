@@ -24,8 +24,9 @@ class HomeMentorCollection: UICollectionView , UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as UITableViewCell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mentorReuseIdentifier, for: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mentorReuseIdentifier, for: indexPath) as! HomeMentorCell
 //        cell.licenseImageView.image = licenseImageArray[indexPath.row]
+        
         cell.layer.cornerRadius = 3
         cell.clipsToBounds = true
         cell.layer.borderWidth = 0.5

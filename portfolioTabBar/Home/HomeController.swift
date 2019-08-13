@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KakaoOpenSDK
 
 class HomeController: UIViewController {
     @IBOutlet var homeMentorCollection: HomeMentorCollection!
@@ -14,8 +15,6 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    
 
 
 }

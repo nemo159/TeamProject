@@ -13,7 +13,7 @@ import KakaoOpenSDK
 
 @UIApplicationMain
 //Google Login을 위해 GIDSignInDelegate 추가
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
 
     var window: UIWindow?
     
@@ -39,6 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                         let ref:DatabaseReference = Database.database().reference()
                         let itemRef = ref.child("user/\(uid)")
                         itemRef.setValue(["name": name, "email": email, "profileUrl": photoUrl])
+                    }
+                }
+                
+                if let controller = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "SelectMentorMentee") as? UIViewController {
+                    if let window = self.window, let rootViewController = window.rootViewController {
+                        var currentController = rootViewController
+                        while let presentedController = currentController.presentedViewController {
+                            currentController = presentedController
+                        }
+                        currentController.present(controller, animated: true, completion: nil)
                     }
                 }
             }

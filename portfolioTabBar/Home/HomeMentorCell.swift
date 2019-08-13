@@ -12,5 +12,5 @@ class HomeMentorCell: UICollectionViewCell {
     @IBOutlet var mentorFieldNLocation: UILabel!
     @IBOutlet var mentorName: UILabel!
     @IBOutlet var mentorProfileImageView: UIImageView!
-    
+
 }
