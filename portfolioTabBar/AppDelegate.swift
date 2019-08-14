@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import GoogleSignIn
-import KakaoOpenSDK
 
 @UIApplicationMain
 //Google Login을 위해 GIDSignInDelegate 추가
@@ -67,13 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
         -> Bool {
-            
-            //Kakaotalk
-            if KOSession.isKakaoAgeAuthCallback(url) {
-                return KOSession.handleOpen(url)
-            }
-            
-            
             return GIDSignIn.sharedInstance().handle(url,
                                                               sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
                                                               annotation: [:])
@@ -82,14 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {    return GIDSignIn.sharedInstance().handle(url,
                                                                                                                                                                      sourceApplication: sourceApplication,
                                                                                                                                                                      annotation: annotation)
-    }
-    
-    private func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        //kakao
-        if KOSession.isKakaoAccountLoginCallback(url as URL) {
-            return KOSession.handleOpen(url as URL)
-        }
-        return false
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

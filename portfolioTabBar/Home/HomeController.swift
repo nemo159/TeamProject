@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KakaoOpenSDK
 
 class HomeController: UIViewController {
     @IBOutlet var homeMentorCollection: HomeMentorCollection!

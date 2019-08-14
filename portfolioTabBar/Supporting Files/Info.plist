@@ -26,28 +26,9 @@
 				<string>com.googleusercontent.apps.385853909403-p830f3om7g7sbr7hgde5vt8qp79069l7</string>
 			</array>
 		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>kakaocda8df9d9d666b0981d5f14bf9106c74</string>
-			</array>
-		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>KAKAO_APP_KEY</key>
-	<string>cda8df9d9d666b0981d5f14bf9106c74</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>kakaocda8df9d9d666b0981d5f14bf9106c74</string>
-		<string>kakaokompassauth</string>
-		<string>storykompassauth</string>
-		<string>kakaolink</string>
-		<string>kakaotalk-5.9.7</string>
-		<string>storylink</string>
-	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
