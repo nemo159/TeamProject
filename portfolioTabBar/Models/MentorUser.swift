@@ -19,7 +19,7 @@ struct MentorUser{
     let about: String?
     let mediaImageUrl: [String]?
     let licenseImageUrl: [String]?
-    
+    let who: String
     
     init(uid: String, dictionary: [String: Any]) {
         self.uid = uid
@@ -32,6 +32,6 @@ struct MentorUser{
         self.about = dictionary["about"] as? String ?? nil
         self.mediaImageUrl = dictionary["mediaImageUrl"] as? [String] ?? nil
         self.licenseImageUrl = dictionary["licenseImageUrl"] as? [String] ?? nil
-        
+        self.who = "Mentor User"
     }
 }

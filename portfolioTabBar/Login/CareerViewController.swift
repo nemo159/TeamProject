@@ -13,20 +13,18 @@ import FirebaseStorage
 
 class CareerViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet var licenseCollection: LicenseCollection!
-    @IBOutlet var mediaCollection: MediaCollection!
     @IBOutlet var addLicenseButton: UIButton!
-    @IBOutlet var addMediaButton: UIButton!
     @IBOutlet var aboutTextView: PlaceHolderTextView!
     let imagePickerController = UIImagePickerController()
     
-    var mediaImageUrls:[String] = []
+//    var mediaImageUrls:[String] = []
     var licenseImageUrls:[String] = []
     var clickedButton:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         licenseCollection.licenseSetCollectionItems()
-        mediaCollection.mediaSetCollectionItems()
+//        mediaCollection.mediaSetCollectionItems()
         initLayout()
         // Do any additional setup after loading the view.
     }
@@ -38,14 +36,14 @@ class CareerViewController: UIViewController, UINavigationControllerDelegate {
                 if let about = aboutTextView.text {
                     Database.database().reference().child("users").child(uid).child("about").setValue(about)
                     
-                    if let mediaImageArray:[UIImage] = mediaCollection.mediaImageArray {
-                        mediaImageArray.forEach { (mediaImage) in
-                            Storage.storage().uploadUserMediaImage(mediaImage: mediaImage, completion: { (mediaImageUrl) in
-                                self.mediaImageUrls.append(mediaImageUrl)
-                                Database.database().reference().child("users").child(uid).child("mediaImage").setValue(self.mediaImageUrls)
-                            })
-                        }
-                        
+//                    if let mediaImageArray:[UIImage] = mediaCollection.mediaImageArray {
+//                        mediaImageArray.forEach { (mediaImage) in
+//                            Storage.storage().uploadUserMediaImage(mediaImage: mediaImage, completion: { (mediaImageUrl) in
+//                                self.mediaImageUrls.append(mediaImageUrl)
+//                                Database.database().reference().child("users").child(uid).child("mediaImage").setValue(self.mediaImageUrls)
+//                            })
+//                        }
+                    
                         if let licenseImageArray:[UIImage] = licenseCollection.licenseImageArray {
                             licenseImageArray.forEach { (licenseImage) in
                                 Storage.storage().uploadUserLicenseImage(licenseImage: licenseImage, completion: { (licenseImageUrl) in
@@ -54,15 +52,17 @@ class CareerViewController: UIViewController, UINavigationControllerDelegate {
                                 })
                             }
                         } // if let license
-                    } // if let media
+//                    } // if let media
                 } // if let about
+                let who = "Mentor User"
+                Database.database().reference().child("users").child(uid).child("who").setValue(who)
             } // if let uid
         }
     }
-    @IBAction func addMediaPressed(_ sender: UIButton) {
-        handlePlusPhoto()
-        clickedButton = "Media"
-    }
+//    @IBAction func addMediaPressed(_ sender: UIButton) {
+//        handlePlusPhoto()
+//        clickedButton = "Media"
+//    }
     
     @IBAction func addLicensePressed(_ sender: UIButton) {
         handlePlusPhoto()
@@ -87,11 +87,11 @@ class CareerViewController: UIViewController, UINavigationControllerDelegate {
         aboutTextView.placeholderLabel.font = UIFont.systemFont(ofSize: 14)
         aboutTextView.autocorrectionType = .no
         //Custom Button
-        addMediaButton.applyGradient(colours: [ UIColor.colorWithHexString(hexStr: "#5574F7"), UIColor.colorWithHexString(hexStr: "#60C3FF")])
+//        addMediaButton.applyGradient(colours: [ UIColor.colorWithHexString(hexStr: "#5574F7"), UIColor.colorWithHexString(hexStr: "#60C3FF")])
         addLicenseButton.applyGradient(colours: [ UIColor.colorWithHexString(hexStr: "#5574F7"), UIColor.colorWithHexString(hexStr: "#60C3FF")])
         //Custom Collection View.
         licenseCollection.setBorder(width: 0.5, color: myColor, corner: 5)
-        mediaCollection.setBorder(width: 0.5, color: myColor, corner: 5)
+//        mediaCollection.setBorder(width: 0.5, color: myColor, corner: 5)
 
     }
 
@@ -105,21 +105,27 @@ extension CareerViewController: UIImagePickerControllerDelegate {
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-            if clickedButton == "Media" {
-                mediaCollection.mediaImageArray.append(editedImage)
-            } else if clickedButton == "License" {
+//            if clickedButton == "Media" {
+//                mediaCollection.mediaImageArray.append(editedImage)
+//            } else if clickedButton == "License" {
+//                licenseCollection.licenseImageArray.append(editedImage)
+//            }
+            if clickedButton == "License" {
                 licenseCollection.licenseImageArray.append(editedImage)
             }
         } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            if clickedButton == "Media" {
-                mediaCollection.mediaImageArray.append(originalImage)
-            } else if clickedButton == "License" {
+//            if clickedButton == "Media" {
+//                mediaCollection.mediaImageArray.append(originalImage)
+//            } else if clickedButton == "License" {
+//                licenseCollection.licenseImageArray.append(originalImage)
+//            }
+            if clickedButton == "License" {
                 licenseCollection.licenseImageArray.append(originalImage)
             }
         }
         clickedButton = ""
         licenseCollection.reloadData()
-        mediaCollection.reloadData()
+//        mediaCollection.reloadData()
         dismiss(animated: true, completion: nil)
     }
 }

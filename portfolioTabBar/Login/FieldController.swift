@@ -12,9 +12,11 @@ import Toast_Swift
 
 class FieldController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     let kHeaderSectionTag: Int = 6900;
     
-    var limit:Int = 4
+    var limit:Int = 1
     var limitCount:Int = 0
     
     @IBOutlet var fieldTableView: UITableView!
@@ -47,7 +49,7 @@ class FieldController: UIViewController, UITableViewDelegate, UITableViewDataSou
             let uid = user.uid
             Database.database().reference().child("users").child(uid).child("fieldList").setValue(selectedField)
         }
-        
+        appDelegate.globalFlag = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -178,6 +180,7 @@ class FieldController: UIViewController, UITableViewDelegate, UITableViewDataSou
                     self.view.hideToast()
                     self.view.makeToast("\(strTemp)", duration: 1.0, position: .bottom, title: "선택된 분야")
                 }
+                appDelegate.globalFlag = true
             }
         }
     }

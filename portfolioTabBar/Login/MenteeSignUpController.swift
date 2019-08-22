@@ -18,6 +18,7 @@ class MenteeSignUpController: UIViewController {
     @IBOutlet var pwTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
+    var flag:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +56,9 @@ class MenteeSignUpController: UIViewController {
         Auth.auth().currentUser?.link(with: credential) { (user,err) in
             if err == nil {
                 guard let uid = user?.user.uid else {return}
+                let who = "Mentee User"
                 Database.database().reference().child("users").child(uid).updateChildValues(["phoneNumber":phoneNumber])
+                Database.database().reference().child("users").child(uid).child("who").setValue(who)
                 print("Anonymous account successfully upgraded", user as Any)
                 DispatchQueue.main.async {
                     self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
@@ -88,10 +91,12 @@ class MenteeSignUpController: UIViewController {
         pwTextField.isUserInteractionEnabled = false
         pwCheckTextField.isUserInteractionEnabled = false
         
-        if password == passwordCheck {
+        signUpFlag()
+        
+        if password == passwordCheck && self.flag == true {
             Auth.auth().createMentee(withEmail: email, username: username, password: password) { (err) in
                 if err != nil {
-                    self.resetInputFields()
+//                    self.resetInputFields()
                     return
                 }
    
@@ -104,20 +109,29 @@ class MenteeSignUpController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             resetInputFields()
         }
-
     }
     
     private func resetInputFields() {
-        emailTextField.text = ""
-        nameTextField.text = ""
-        pwTextField.text = ""
-        pwCheckTextField.text = ""
-        
+
         emailTextField.isUserInteractionEnabled = true
         nameTextField.isUserInteractionEnabled = true
         pwTextField.isUserInteractionEnabled = true
         pwCheckTextField.isUserInteractionEnabled = true
 
+    }
+    
+    func signUpFlag() {
+        if nameTextField.text != "" && emailTextField.text != "" && pwTextField.text != "" && pwCheckTextField.text != "" && phoneNumberTF.text != "" && otpTextField.text != "" {
+            self.flag = true
+        } else {
+            let alertController = UIAlertController(title: "회원가입 실패", message:
+                "작성하지 않은 항목이 있습니다.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            }))
+            self.present(alertController, animated: true, completion: nil)
+            resetInputFields()
+            self.flag = false
+        }
     }
     
 }

@@ -12,6 +12,8 @@ import Toast_Swift
 
 class DayTimeController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     let kHeaderSectionTag: Int = 6900;
     
     var limit:Int = 4
@@ -48,7 +50,7 @@ class DayTimeController: UIViewController, UITableViewDelegate, UITableViewDataS
             let uid = user.uid
             Database.database().reference().child("users").child(uid).child("timeList").setValue(selectedDayTime)
         }
-        
+        appDelegate.globalFlag = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -181,6 +183,7 @@ class DayTimeController: UIViewController, UITableViewDelegate, UITableViewDataS
                     self.view.makeToast("\(strTemp)", duration: 1.0, position: .bottom, title: "선택된 분야")
 
                 }
+                appDelegate.globalFlag = true
             }
         }
     }

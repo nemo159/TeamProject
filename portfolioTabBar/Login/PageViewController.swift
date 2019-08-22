@@ -12,6 +12,8 @@ class PageViewController: UIPageViewController {
 
     weak var pageDelegate: PageViewControllerDelegate?
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         // The view controllers will be shown in this order
         return [self.newColoredViewController("First"),
@@ -40,10 +42,13 @@ class PageViewController: UIPageViewController {
      Scrolls to the next view controller.
      */
     func scrollToNextViewController() {
-        if let visibleViewController = viewControllers?.first,
-            let nextViewController = pageViewController(self, viewControllerAfter: visibleViewController) {
-            scrollToViewController(viewController: nextViewController)
+        if appDelegate.globalFlag == true {
+            if let visibleViewController = viewControllers?.first,
+                let nextViewController = pageViewController(self, viewControllerAfter: visibleViewController) {
+                scrollToViewController(viewController: nextViewController)
+            }
         }
+        
     }
     
     func scrollToBackViewController() {

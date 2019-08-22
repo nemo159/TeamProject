@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
 
     var window: UIWindow?
     
+    var globalFlag: Bool? = false
+    
     //Google Login
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         if error != nil {

@@ -22,6 +22,14 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
     
     private var profileImage: UIImage?
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var flag:Bool = false
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        appDelegate.globalFlag = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +50,7 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
         guard let phoneNumber = phoneNumberTF.text else {return}
         guard let verificationID = UserDefaults.standard.string(forKey: "verificationID") else {return}
 
-        
+        handleSignUp()
         
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: otpNumber)
 
@@ -77,7 +85,7 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
                 print("Unable to Secret Verification Code from Firebase", err?.localizedDescription as Any)
             }
         }
-        handleSignUp()
+//        handleSignUp()
     }
     
     @IBAction func plusButtonPressed(_ sender: UIButton) {
@@ -94,13 +102,14 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
         pwTextField.isUserInteractionEnabled = false
         pwCheckTextField.isUserInteractionEnabled = false
         
-        if password == passwordCheck {
+        signUpFlag()
+        
+        if password == passwordCheck && self.flag == true {
             Auth.auth().createMentor(withEmail: email, username: username, password: password, profileImage: profileImage) { (err) in
                 if err != nil {
-                    
+                    self.appDelegate.globalFlag = true
                     return
                 }
-                
             }
         } else {
             let alertController = UIAlertController(title: "회원가입 실패", message:
@@ -108,9 +117,33 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
             }))
             self.present(alertController, animated: true, completion: nil)
-            
+            self.appDelegate.globalFlag = false
+            resetInputFields()
         }
         
+    }
+    
+    private func resetInputFields() {
+        emailTextField.isUserInteractionEnabled = true
+        nameTextField.isUserInteractionEnabled = true
+        pwTextField.isUserInteractionEnabled = true
+        pwCheckTextField.isUserInteractionEnabled = true
+    }
+    
+    func signUpFlag() {
+        if nameTextField.text != "" && emailTextField.text != "" && pwTextField.text != "" && pwCheckTextField.text != "" && phoneNumberTF.text != "" && optTextField.text != "" {
+            self.flag = true
+            appDelegate.globalFlag = true
+        } else {
+            let alertController = UIAlertController(title: "회원가입 실패", message:
+                "작성하지 않은 항목이 있습니다.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            }))
+            self.present(alertController, animated: true, completion: nil)
+            resetInputFields()
+            self.flag = false
+            appDelegate.globalFlag = false
+        }
     }
     
     func initLayout() {

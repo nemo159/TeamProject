@@ -12,9 +12,11 @@ import Toast_Swift
 
 class CityController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     let kHeaderSectionTag: Int = 6900;
     
-    var limit:Int = 4
+    var limit:Int = 1
     var limitCount:Int = 0
     
     @IBOutlet var cityTableView: UITableView!
@@ -58,7 +60,7 @@ class CityController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let uid = user.uid
             Database.database().reference().child("users").child(uid).child("cityList").setValue(selectedCity)
         }
-
+        appDelegate.globalFlag = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -142,12 +144,11 @@ class CityController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //        print("selected  \(sectionItems[namesIndex][indexPath.row])")
         var strTemp = ""
         if let cell = tableView.cellForRow(at: indexPath) {
-            if cell.isSelected{
+            if cell.isSelected {
                 if cell.accessoryType == .checkmark {
                     cell.accessoryType = .none
                     if selectedRow.contains(indexPath) {
                         selectedRow.remove(indexPath)
-
                     }
                     for idx in 0 ..< limitCount {
                         if selectedCity[idx] == "\(cityList[namesIndex])-\(cityUrbanList[namesIndex][indexPath.row])" {
@@ -165,7 +166,6 @@ class CityController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             return
                         }
                     }
-                    
                 } else {
                     if limitCount >= limit {
                         let alertController = UIAlertController(title: "Oops", message:
@@ -173,12 +173,13 @@ class CityController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
                         }))
                         self.present(alertController, animated: true, completion: nil)
-                        
                         return
                     }
+                
                     cell.accessoryType = .checkmark
                     selectedRow.insert(tableView.indexPathForSelectedRow!)
                     limitCount += 1
+
                     print("Test SelectedRow: \(selectedRow)")
                     
                     selectedCity.append("\(cityList[namesIndex])-\(cityUrbanList[namesIndex][indexPath.row])")
@@ -192,8 +193,8 @@ class CityController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                     self.view.hideToast()
                     self.view.makeToast("\(strTemp)", duration: 1.0, position: .bottom, title: "선택된 분야")
-
                 }
+                appDelegate.globalFlag = true
             }
         }
     }
