@@ -447,7 +447,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QZl-GO-1Ex">
-                                <rect key="frame" x="40" y="84" width="334" height="290"/>
+                                <rect key="frame" x="40" y="224" width="334" height="340"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PAH-0z-Mbj">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -458,8 +458,14 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Oy-fg-0KZ">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qOu-iE-4hu">
                                         <rect key="frame" x="0.0" y="50" width="334" height="40"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Oy-fg-0KZ">
+                                        <rect key="frame" x="0.0" y="100" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ZdK-ST-zaN"/>
                                         </constraints>
@@ -468,7 +474,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="csF-kJ-0hM">
-                                        <rect key="frame" x="0.0" y="100" width="334" height="40"/>
+                                        <rect key="frame" x="0.0" y="150" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="QEK-QX-C1y"/>
                                         </constraints>
@@ -477,7 +483,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password Check" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wHm-37-naO">
-                                        <rect key="frame" x="0.0" y="150" width="334" height="40"/>
+                                        <rect key="frame" x="0.0" y="200" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="n2h-c1-zoJ"/>
                                         </constraints>
@@ -486,7 +492,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4M-Ex-aE1">
-                                        <rect key="frame" x="0.0" y="200" width="334" height="40"/>
+                                        <rect key="frame" x="0.0" y="250" width="334" height="40"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PhoneNumber" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUm-j3-kIj">
                                                 <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
@@ -520,7 +526,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lx2-nw-UH4">
-                                        <rect key="frame" x="0.0" y="250" width="334" height="40"/>
+                                        <rect key="frame" x="0.0" y="300" width="334" height="40"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="OTP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MFB-Dw-cFE">
                                                 <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
@@ -555,12 +561,27 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hew-62-ndj">
+                                <rect key="frame" x="137" y="64" width="140" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="Dde-1S-3Wz"/>
+                                    <constraint firstAttribute="width" constant="140" id="cj3-Oe-Eoh"/>
+                                </constraints>
+                                <state key="normal" image="profile.png"/>
+                                <connections>
+                                    <action selector="plusButtonPressed:" destination="Xyb-MO-YJr" eventType="touchUpInside" id="Kpy-Ui-xZB"/>
+                                    <action selector="plusPhotoButtomPressed:" destination="XA1-Qg-h4G" eventType="touchUpInside" id="QZB-LJ-BxZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="QZl-GO-1Ex" firstAttribute="leading" secondItem="eNS-IC-gun" secondAttribute="leading" constant="40" id="1hp-UG-JCY"/>
-                            <constraint firstItem="QZl-GO-1Ex" firstAttribute="top" secondItem="eNS-IC-gun" secondAttribute="top" constant="40" id="Nht-LD-YzJ"/>
+                            <constraint firstItem="Hew-62-ndj" firstAttribute="top" secondItem="eNS-IC-gun" secondAttribute="top" constant="20" id="J1J-9F-Lnb"/>
+                            <constraint firstItem="QZl-GO-1Ex" firstAttribute="top" secondItem="eNS-IC-gun" secondAttribute="top" constant="180" id="Nht-LD-YzJ"/>
+                            <constraint firstItem="Hew-62-ndj" firstAttribute="centerX" secondItem="eNS-IC-gun" secondAttribute="centerX" id="ShV-Ke-am7"/>
                             <constraint firstItem="eNS-IC-gun" firstAttribute="trailing" secondItem="QZl-GO-1Ex" secondAttribute="trailing" constant="40" id="WoO-x1-JCd"/>
+                            <constraint firstItem="QZl-GO-1Ex" firstAttribute="top" secondItem="Hew-62-ndj" secondAttribute="bottom" constant="20" id="elN-Ui-b2h"/>
                             <constraint firstItem="RQJ-eH-ePa" firstAttribute="bottom" secondItem="eNS-IC-gun" secondAttribute="bottom" id="gAy-md-wUr"/>
                             <constraint firstItem="RQJ-eH-ePa" firstAttribute="centerX" secondItem="eNS-IC-gun" secondAttribute="centerX" id="jdl-dK-uxd"/>
                         </constraints>
@@ -569,9 +590,11 @@
                     <connections>
                         <outlet property="emailTextField" destination="8Oy-fg-0KZ" id="2Bp-hh-5Vz"/>
                         <outlet property="nameTextField" destination="PAH-0z-Mbj" id="bSf-9J-8Bc"/>
+                        <outlet property="nicknameTextField" destination="qOu-iE-4hu" id="Wh5-ev-pZ0"/>
                         <outlet property="otpTextField" destination="MFB-Dw-cFE" id="vj9-aj-ScZ"/>
                         <outlet property="phoneButton" destination="p8c-E5-20c" id="Xz2-bB-xBw"/>
                         <outlet property="phoneNumberTF" destination="cUm-j3-kIj" id="rEJ-Ys-vYX"/>
+                        <outlet property="plusPhotoButton" destination="Hew-62-ndj" id="ZYd-1m-LeA"/>
                         <outlet property="pwCheckTextField" destination="wHm-37-naO" id="doD-8A-6Xo"/>
                         <outlet property="pwTextField" destination="csF-kJ-0hM" id="Uhz-P3-sz1"/>
                         <outlet property="verifyButton" destination="6Rh-y8-ICq" id="hGX-Np-0iN"/>
@@ -602,7 +625,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="up0-3A-ZzR">
-                                <rect key="frame" x="40" y="224" width="334" height="290"/>
+                                <rect key="frame" x="40" y="224" width="334" height="340"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSX-Y7-3ge">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -613,8 +636,14 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gHn-Zm-x26">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="02A-Yy-UBL">
                                         <rect key="frame" x="0.0" y="50" width="334" height="40"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gHn-Zm-x26">
+                                        <rect key="frame" x="0.0" y="100" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ggd-Zd-Fpr"/>
                                         </constraints>
@@ -623,7 +652,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Tr-cf-L3R">
-                                        <rect key="frame" x="0.0" y="100" width="334" height="40"/>
+                                        <rect key="frame" x="0.0" y="150" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="2ey-A7-uFG"/>
                                         </constraints>
@@ -632,7 +661,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password Check" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LsA-nW-EcF">
-                                        <rect key="frame" x="0.0" y="150" width="334" height="40"/>
+                                        <rect key="frame" x="0.0" y="200" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="wbi-NV-THc"/>
                                         </constraints>
@@ -641,7 +670,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYN-wa-G9T">
-                                        <rect key="frame" x="0.0" y="200" width="334" height="40"/>
+                                        <rect key="frame" x="0.0" y="250" width="334" height="40"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PhoneNumber" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="byQ-Jy-X6G">
                                                 <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
@@ -675,7 +704,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8Z-wh-1Gv">
-                                        <rect key="frame" x="0.0" y="250" width="334" height="40"/>
+                                        <rect key="frame" x="0.0" y="300" width="334" height="40"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="OTP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Gk-aA-dUG">
                                                 <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
@@ -725,6 +754,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="gHn-Zm-x26" id="4Dx-7K-Qn8"/>
                         <outlet property="nameTextField" destination="DSX-Y7-3ge" id="Ayk-eC-9EU"/>
+                        <outlet property="nicknameTextField" destination="02A-Yy-UBL" id="7bl-nO-VDL"/>
                         <outlet property="optTextField" destination="7Gk-aA-dUG" id="g58-5o-kpR"/>
                         <outlet property="phoneNumberTF" destination="byQ-Jy-X6G" id="WJG-pL-JGX"/>
                         <outlet property="plusPhotoButton" destination="YPO-ND-bMH" id="4ld-oc-BeY"/>

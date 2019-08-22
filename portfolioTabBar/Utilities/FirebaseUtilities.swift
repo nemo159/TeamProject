@@ -12,7 +12,7 @@ import FirebaseStorage
 
 extension Auth {
     // Mark: - Auth Create Mentor
-    func createMentor(withEmail email: String, username: String, password: String, profileImage: UIImage?, completion: @escaping (Error?) -> ()) {
+    func createMentor(withEmail email: String, username: String, nickname: String, password: String, profileImage: UIImage?, completion: @escaping (Error?) -> ()) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, err) in
             if let err = err {
                 print("Failed to create user:", err)
@@ -22,19 +22,22 @@ extension Auth {
             guard let uid = user?.user.uid else { return }
             if let profileImage = profileImage {
                 Storage.storage().uploadUserProfileImage(profileImage: profileImage, completion: { (profileImageUrl) in
-                    self.uploadMentor(withUID: uid, username: username, profileImageUrl: profileImageUrl) {
+                    self.uploadMentor(withUID: uid, username: username, nickname: nickname, profileImageUrl: profileImageUrl) {
                         completion(nil)
                     }
                 })
             } else {
-                self.uploadMentor(withUID: uid, username: username) {
+                self.uploadMentor(withUID: uid, username: username, nickname: nickname) {
                     completion(nil)
                 }
             }
         })
     }
-    private func uploadMentor(withUID uid: String, username: String, profileImageUrl: String? = nil, completion: @escaping (() -> ())) {
+    private func uploadMentor(withUID uid: String, username: String, nickname: String?, profileImageUrl: String? = nil, completion: @escaping (() -> ())) {
         var dictionaryValues = ["username": username]
+        if nickname != nil {
+            dictionaryValues["nickname"] = nickname
+        }
         if profileImageUrl != nil {
             dictionaryValues["profileImageUrl"] = profileImageUrl
         }
@@ -50,7 +53,7 @@ extension Auth {
     }
     
     // Mark: - Auth Create Mentee
-    func createMentee(withEmail email:String, username: String, password: String, completion: @escaping (Error?) -> () ) {
+    func createMentee(withEmail email:String, username: String, nickname: String, password: String, profileImage: UIImage?, completion: @escaping (Error?) -> () ) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, err) in
             if let err = err {
                 print("Failed to create Mentee:", err)
@@ -58,14 +61,28 @@ extension Auth {
                 return
             }
             guard let uid = user?.user.uid else {return}
-            self.uploadMentee(withUID: uid, username: username) {
-                completion(nil)
+            if let profileImage = profileImage {
+            Storage.storage().uploadUserProfileImage(profileImage: profileImage, completion: { (profileImageUrl) in
+                self.uploadMentee(withUID: uid, username: username, nickname: nickname, profileImageUrl: profileImageUrl) {
+                        completion(nil)
+                    }
+                })
+            } else {
+                self.uploadMentee(withUID: uid, username: username, nickname: nickname) {
+                    completion(nil)
+                }
             }
         })
 
     }
-    private func uploadMentee(withUID uid: String, username: String, completion: @escaping (() -> ())) {
-        let dictionaryValues = ["username": username]
+    private func uploadMentee(withUID uid: String, username: String, nickname: String?, profileImageUrl: String? = nil, completion: @escaping (() -> ())) {
+        var dictionaryValues = ["username": username]
+        if nickname != nil {
+            dictionaryValues["nickname"] = nickname
+        }
+        if profileImageUrl != nil {
+            dictionaryValues["profileImageUrl"] = profileImageUrl
+        }
         
         let values = [uid: dictionaryValues]
         Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in

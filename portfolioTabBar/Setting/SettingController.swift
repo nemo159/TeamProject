@@ -15,15 +15,11 @@ class SettingController: UIViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIBarButtonItem) {
         do {
             try Auth.auth().signOut()
-//            let loginController = LoginController()
-//            let navController = UINavigationController(rootViewController: loginController)
-//            self.present(navController, animated: true, completion: nil)
             if Auth.auth().currentUser == nil {
                 presentLoginController()
             }

@@ -18,6 +18,7 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet var pwTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var nicknameTextField: UITextField!
     @IBOutlet var plusPhotoButton: UIButton!
     
     private var profileImage: UIImage?
@@ -95,17 +96,19 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
     @objc private func handleSignUp() {
         guard let email = emailTextField.text else { return }
         guard let username = nameTextField.text else { return }
+        guard let nickname = nicknameTextField.text else { return }
         guard let password = pwTextField.text else { return }
         guard let passwordCheck = pwCheckTextField.text else { return }
         emailTextField.isUserInteractionEnabled = false
         nameTextField.isUserInteractionEnabled = false
+        nicknameTextField.isUserInteractionEnabled = false
         pwTextField.isUserInteractionEnabled = false
         pwCheckTextField.isUserInteractionEnabled = false
         
         signUpFlag()
         
         if password == passwordCheck && self.flag == true {
-            Auth.auth().createMentor(withEmail: email, username: username, password: password, profileImage: profileImage) { (err) in
+            Auth.auth().createMentor(withEmail: email, username: username, nickname: nickname, password: password, profileImage: profileImage) { (err) in
                 if err != nil {
                     self.appDelegate.globalFlag = true
                     return
@@ -126,12 +129,13 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
     private func resetInputFields() {
         emailTextField.isUserInteractionEnabled = true
         nameTextField.isUserInteractionEnabled = true
+        nicknameTextField.isUserInteractionEnabled = true
         pwTextField.isUserInteractionEnabled = true
         pwCheckTextField.isUserInteractionEnabled = true
     }
     
     func signUpFlag() {
-        if nameTextField.text != "" && emailTextField.text != "" && pwTextField.text != "" && pwCheckTextField.text != "" && phoneNumberTF.text != "" && optTextField.text != "" {
+        if nameTextField.text != "" && emailTextField.text != "" && pwTextField.text != "" && pwCheckTextField.text != "" && phoneNumberTF.text != "" && optTextField.text != "" && nicknameTextField.text != "" {
             self.flag = true
             appDelegate.globalFlag = true
         } else {

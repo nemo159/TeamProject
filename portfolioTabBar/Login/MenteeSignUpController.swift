@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class MenteeSignUpController: UIViewController {
+class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet var phoneButton: UIButton!
     @IBOutlet var verifyButton: UIButton!
     @IBOutlet var otpTextField: UITextField!
@@ -18,7 +18,11 @@ class MenteeSignUpController: UIViewController {
     @IBOutlet var pwTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var nicknameTextField: UITextField!
+    @IBOutlet var plusPhotoButton: UIButton!
     var flag:Bool = false
+    
+    private var profileImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +30,13 @@ class MenteeSignUpController: UIViewController {
 
         initLayout()
         
+    }
+    
+    @objc private func handlePlusPhoto() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        present(imagePickerController, animated: true, completion: nil)
     }
 
     @IBAction func phoneButtonPressed(_ sender: UIButton) {
@@ -42,6 +53,11 @@ class MenteeSignUpController: UIViewController {
                 print("Unable to Secret Verification Code from Firebase", err?.localizedDescription as Any)
             }
         }
+    }
+    
+    
+    @IBAction func plusPhotoButtomPressed(_ sender: UIButton) {
+        handlePlusPhoto()
     }
     
     @IBAction func verifyButtonPressed(_ sender: UIButton) {
@@ -84,17 +100,19 @@ class MenteeSignUpController: UIViewController {
     @objc private func handleSignUp() {
         guard let email = emailTextField.text else { return }
         guard let username = nameTextField.text else { return }
+        guard let nickname = nicknameTextField.text else { return }
         guard let password = pwTextField.text else { return }
         guard let passwordCheck = pwCheckTextField.text else { return }
         emailTextField.isUserInteractionEnabled = false
         nameTextField.isUserInteractionEnabled = false
+        nicknameTextField.isUserInteractionEnabled = false
         pwTextField.isUserInteractionEnabled = false
         pwCheckTextField.isUserInteractionEnabled = false
         
         signUpFlag()
-        
+                
         if password == passwordCheck && self.flag == true {
-            Auth.auth().createMentee(withEmail: email, username: username, password: password) { (err) in
+            Auth.auth().createMentee(withEmail: email, username: username, nickname: nickname, password: password, profileImage: profileImage) { (err) in
                 if err != nil {
 //                    self.resetInputFields()
                     return
@@ -115,13 +133,14 @@ class MenteeSignUpController: UIViewController {
 
         emailTextField.isUserInteractionEnabled = true
         nameTextField.isUserInteractionEnabled = true
+        nicknameTextField.isUserInteractionEnabled = true
         pwTextField.isUserInteractionEnabled = true
         pwCheckTextField.isUserInteractionEnabled = true
 
     }
     
     func signUpFlag() {
-        if nameTextField.text != "" && emailTextField.text != "" && pwTextField.text != "" && pwCheckTextField.text != "" && phoneNumberTF.text != "" && otpTextField.text != "" {
+        if nameTextField.text != "" && emailTextField.text != "" && pwTextField.text != "" && pwCheckTextField.text != "" && phoneNumberTF.text != "" && otpTextField.text != "" && nicknameTextField.text != "" {
             self.flag = true
         } else {
             let alertController = UIAlertController(title: "회원가입 실패", message:
@@ -143,4 +162,28 @@ extension MenteeSignUpController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+}
+
+//MARK: UIImagePickerControllerDelegate
+extension MenteeSignUpController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // Local variable inserted by Swift 4.2 migrator.
+        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+        
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            plusPhotoButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+            profileImage = editedImage
+        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            plusPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
+            profileImage = originalImage
+        }
+        plusPhotoButton.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
+        plusPhotoButton.layer.borderWidth = 0.5
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+    return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
 }
