@@ -43,6 +43,24 @@ extension UIButton {
     }
 }
 
+// MARK: - custom imageview methods
+extension UIImageView {
+    func setBorderColor(width:CGFloat, color:UIColor, corner:CGFloat) -> Void {
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = width
+        self.layer.cornerRadius = corner
+    }
+    func applyGradient(colours: [UIColor]) -> Void {
+        self.layer.cornerRadius = 5
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.layer.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.0)
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+}
+
 // MARK: - custom textfield methods
 extension UITextField {
     func setBorderColor(width:CGFloat, color:UIColor, corner: CGFloat) -> Void {

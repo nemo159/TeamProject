@@ -167,3 +167,133 @@ extension Storage {
     }
 }
 
+extension Database {
+    
+    //MARK: Users
+    func fetchUser(withUID uid: String, completion: @escaping (User) -> ()) {
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let userDictionary = snapshot.value as? [String: Any] else { return }
+            let user = User(uid: uid, dictionary: userDictionary)
+            completion(user)
+        }) { (err) in
+            print("Failed to fetch user from database:", err)
+        }
+    }
+    
+    func fetchAllUsers(includeCurrentUser: Bool = true, completion: @escaping ([User]) -> (), withCancel cancel: ((Error) -> ())?) {
+        let ref = Database.database().reference().child("users")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let dictionaries = snapshot.value as? [String: Any] else {
+                completion([])
+                return
+            }
+            
+            var users = [User]()
+            
+            dictionaries.forEach({ (key, value) in
+                if !includeCurrentUser, key == Auth.auth().currentUser?.uid {
+                    completion([])
+                    return
+                }
+                guard let userDictionary = value as? [String: Any] else { return }
+                let user = User(uid: key, dictionary: userDictionary)
+                users.append(user)
+            })
+            
+//            users.sort(by: { (user1, user2) -> Bool in
+//                return user1.username.compare(user2.username) == .orderedAscending
+//            })
+            completion(users)
+            
+        }) { (err) in
+            print("Failed to fetch all users from database:", (err))
+            cancel?(err)
+        }
+    }
+    
+    //MARK: Posts
+//    func createPost(withImage image: UIImage, caption: String, completion: @escaping (Error?) -> ()) {
+//        guard let uid = Auth.auth().currentUser?.uid else { return }
+//
+//        let userPostRef = Database.database().reference().child("posts").child(uid).childByAutoId()
+//
+//        guard let postId = userPostRef.key else { return }
+//
+//        Storage.storage().uploadPostImage(image: image, filename: postId) { (postImageUrl) in
+//            let values = ["imageUrl": postImageUrl, "caption": caption, "imageWidth": image.size.width, "imageHeight": image.size.height, "creationDate": Date().timeIntervalSince1970, "id": postId] as [String : Any]
+//
+//            userPostRef.updateChildValues(values) { (err, ref) in
+//                if let err = err {
+//                    print("Failed to save post to database", err)
+//                    completion(err)
+//                    return
+//                }
+//                completion(nil)
+//            }
+//        }
+//    }
+    
+    //MARK: Messages
+    func addMessageToFollow(uid: String, withFollowId followID: String, text: String, completion: @escaping (Error?) -> ()) {
+        let reference = Database.database().reference().child("messages")
+        let childRef = reference.childByAutoId()
+        
+        let values = ["text": text, "creationDate": Date().timeIntervalSince1970, "toUid": followID, "fromUid": uid] as [String: Any]
+        
+        childRef.updateChildValues(values) { (err, _) in
+            if let err = err {
+                print("Failed to add message:", err)
+                completion(err)
+                return
+            }
+            completion(nil)
+        }
+        guard let messageID = childRef.key else { return }
+        
+        let userMessagesRef = Database.database().reference().child("user-messages").child(uid).child(followID).child(messageID)
+        userMessagesRef.setValue(1)
+        
+        let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(followID).child(uid).child(messageID)
+        recipientUserMessagesRef.setValue(1)
+        
+    }
+    
+    //
+    //    func fetchMessageFromFollow(withId followID: String, completion: @escaping ([Message]) -> (), withCancel cancel: ((Error) -> ())?) {
+    //        guard let uid = Auth.auth().currentUser?.uid else {return}
+    //        let messagesRef = Database.database().reference().child("messages").child(uid).child("sR9NTPPeCBTbnGvBUT7X4QLeoOo1")
+    //        messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+    //            print("1.. \(snapshot)")
+    //            guard let dictionaries = snapshot.value as? [String: Any] else {
+    //                completion([])
+    //                return
+    //            }
+    //            var messages = [Message]()
+    //
+    //            dictionaries.forEach({ (key, value) in
+    //                guard let messageDictionary = value as? [String: Any] else { return }
+    //                guard let uid = messageDictionary["uid"] as? String else { return }
+    ////                print("2.. \(messageDictionary)")
+    ////                print("3.. \(uid)")
+    //                Database.database().fetchUser(withUID: uid) { (user) in
+    //                    let message = Message(user: user, dictionary: messageDictionary)
+    //                    messages.append(message)
+    //
+    //                    if messages.count == dictionaries.count {
+    //                        messages.sort(by: { (message1, message2) -> Bool in
+    //                            return message1.creationDate.compare(message2.creationDate) == .orderedAscending
+    //                        })
+    //                        completion(messages)
+    //                    }
+    //                }
+    //            })
+    //
+    //        }) { (err) in
+    //            print("Failed to fetch messages:", err)
+    //            cancel?(err)
+    //        }
+    //    }
+    //
+    //
+    
+}

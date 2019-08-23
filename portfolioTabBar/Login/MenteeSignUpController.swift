@@ -20,17 +20,68 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var nicknameTextField: UITextField!
     @IBOutlet var plusPhotoButton: UIButton!
-    var flag:Bool = false
+    var signupFlag:Bool = false
+    var doubleCheckFlag:Bool = false
+
+    
+    var users = [User]()
     
     private var profileImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        hideKeyboardWhenTappedArroun()
-
         initLayout()
-        
     }
+    
+    func fetchAllUsers() {
+        Database.database().fetchAllUsers(includeCurrentUser: false, completion: { (users) in
+            self.users = users
+            
+            if users.count == 0 {
+                let alertController = UIAlertController(title: "중복확인", message:
+                    "사용가능한 별명입니다.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+                }))
+                self.present(alertController, animated: true, completion: nil)
+                self.doubleCheckFlag = true
+            }
+            
+            for idx in 0 ..< users.count {
+                
+                if users[idx].nickname == self.nicknameTextField.text {
+                    let alertController = UIAlertController(title: "중복확인", message:
+                        "중복된 별명입니다.", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+                    }))
+                    self.present(alertController, animated: true, completion: nil)
+                    self.resetInputFields()
+                    self.doubleCheckFlag = false
+                } else {
+                    let alertController = UIAlertController(title: "중복확인", message:
+                        "사용가능한 별명입니다.", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+                    }))
+                    self.present(alertController, animated: true, completion: nil)
+                    self.doubleCheckFlag = true
+                }
+            }
+        }) { (_) in
+            print("Fetch Users Err in FollowTableView")
+        }
+    }
+    
+//    func doubleCheck() {
+//        if self.flag == false {
+//            let alertController = UIAlertController(title: "회원가입 실패", message:
+//                "별명을 확인해 주세요.", preferredStyle: .alert)
+//            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+//            }))
+//            self.present(alertController, animated: true, completion: nil)
+//            self.resetInputFields()
+//            return
+//        }
+//    }
     
     @objc private func handlePlusPhoto() {
         let imagePickerController = UIImagePickerController()
@@ -58,6 +109,9 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func plusPhotoButtomPressed(_ sender: UIButton) {
         handlePlusPhoto()
+    }
+    @IBAction func doubleCheckButtonPressed(_ sender: UIButton) {
+        fetchAllUsers()
     }
     
     @IBAction func verifyButtonPressed(_ sender: UIButton) {
@@ -89,43 +143,57 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
     func initLayout() {
         let myColor: UIColor = UIColor.colorWithRGBHex(hex: 0x58C1F9)
         
+        //Button
+        plusPhotoButton.setBorderColor(width: 0.5, color: myColor, corner: 140 / 2)
+        //TextField
         pwCheckTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
         pwTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
         emailTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
         nameTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
+        nicknameTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
         phoneNumberTF.setBorderColor(width: 0.5, color: myColor, corner: 5)
         otpTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
     }
     
     @objc private func handleSignUp() {
-        guard let email = emailTextField.text else { return }
-        guard let username = nameTextField.text else { return }
-        guard let nickname = nicknameTextField.text else { return }
-        guard let password = pwTextField.text else { return }
-        guard let passwordCheck = pwCheckTextField.text else { return }
-        emailTextField.isUserInteractionEnabled = false
-        nameTextField.isUserInteractionEnabled = false
-        nicknameTextField.isUserInteractionEnabled = false
-        pwTextField.isUserInteractionEnabled = false
-        pwCheckTextField.isUserInteractionEnabled = false
-        
-        signUpFlag()
-                
-        if password == passwordCheck && self.flag == true {
-            Auth.auth().createMentee(withEmail: email, username: username, nickname: nickname, password: password, profileImage: profileImage) { (err) in
-                if err != nil {
-//                    self.resetInputFields()
-                    return
+        if doubleCheckFlag {
+            guard let email = emailTextField.text else { return }
+            guard let username = nameTextField.text else { return }
+            guard let nickname = nicknameTextField.text else { return }
+            guard let password = pwTextField.text else { return }
+            guard let passwordCheck = pwCheckTextField.text else { return }
+            emailTextField.isUserInteractionEnabled = false
+            nameTextField.isUserInteractionEnabled = false
+            nicknameTextField.isUserInteractionEnabled = false
+            pwTextField.isUserInteractionEnabled = false
+            pwCheckTextField.isUserInteractionEnabled = false
+            
+            signUpFlag()
+            
+            if password == passwordCheck && self.signupFlag == true {
+                Auth.auth().createMentee(withEmail: email, username: username, nickname: nickname, password: password, profileImage: profileImage) { (err) in
+                    if err != nil {
+                        //                    self.resetInputFields()
+                        return
+                    }
+                    
                 }
-   
+            } else {
+                let alertController = UIAlertController(title: "회원가입 실패", message:
+                    "패스워드가 일치하지 않습니다.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+                }))
+                self.present(alertController, animated: true, completion: nil)
+                resetInputFields()
             }
         } else {
             let alertController = UIAlertController(title: "회원가입 실패", message:
-                "패스워드가 일치하지 않습니다.", preferredStyle: .alert)
+                "별명을 확인해 주세요.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
             }))
             self.present(alertController, animated: true, completion: nil)
-            resetInputFields()
+            self.resetInputFields()
+            return
         }
     }
     
@@ -141,7 +209,7 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
     
     func signUpFlag() {
         if nameTextField.text != "" && emailTextField.text != "" && pwTextField.text != "" && pwCheckTextField.text != "" && phoneNumberTF.text != "" && otpTextField.text != "" && nicknameTextField.text != "" {
-            self.flag = true
+            self.signupFlag = true
         } else {
             let alertController = UIAlertController(title: "회원가입 실패", message:
                 "작성하지 않은 항목이 있습니다.", preferredStyle: .alert)
@@ -149,7 +217,7 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
             }))
             self.present(alertController, animated: true, completion: nil)
             resetInputFields()
-            self.flag = false
+            self.signupFlag = false
         }
     }
     

@@ -24,7 +24,47 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
     private var profileImage: UIImage?
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var flag:Bool = false
+    var signupFlag:Bool = false
+    var doubleCheckFlag:Bool = false
+    
+    var users = [User]()
+    
+    func fetchAllUsers() {
+        Database.database().fetchAllUsers(includeCurrentUser: false, completion: { (users) in
+            self.users = users
+            
+            if users.count == 0 {
+                let alertController = UIAlertController(title: "중복확인", message:
+                    "사용가능한 별명입니다.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+                }))
+                self.present(alertController, animated: true, completion: nil)
+                self.doubleCheckFlag = true
+            }
+            
+            for idx in 0 ..< users.count {
+                
+                if users[idx].nickname == self.nicknameTextField.text {
+                    let alertController = UIAlertController(title: "중복확인", message:
+                        "중복된 별명입니다.", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+                    }))
+                    self.present(alertController, animated: true, completion: nil)
+                    self.resetInputFields()
+                    self.doubleCheckFlag = false
+                } else {
+                    let alertController = UIAlertController(title: "중복확인", message:
+                        "사용가능한 별명입니다.", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+                    }))
+                    self.present(alertController, animated: true, completion: nil)
+                    self.doubleCheckFlag = true
+                }
+            }
+        }) { (_) in
+            print("Fetch Users Err in FollowTableView")
+        }
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -92,38 +132,50 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
     @IBAction func plusButtonPressed(_ sender: UIButton) {
         handlePlusPhoto()
     }
+    @IBAction func doubleCheckButtonPressed(_ sender: UIButton) {
+        fetchAllUsers()
+    }
     
     @objc private func handleSignUp() {
-        guard let email = emailTextField.text else { return }
-        guard let username = nameTextField.text else { return }
-        guard let nickname = nicknameTextField.text else { return }
-        guard let password = pwTextField.text else { return }
-        guard let passwordCheck = pwCheckTextField.text else { return }
-        emailTextField.isUserInteractionEnabled = false
-        nameTextField.isUserInteractionEnabled = false
-        nicknameTextField.isUserInteractionEnabled = false
-        pwTextField.isUserInteractionEnabled = false
-        pwCheckTextField.isUserInteractionEnabled = false
-        
-        signUpFlag()
-        
-        if password == passwordCheck && self.flag == true {
-            Auth.auth().createMentor(withEmail: email, username: username, nickname: nickname, password: password, profileImage: profileImage) { (err) in
-                if err != nil {
-                    self.appDelegate.globalFlag = true
-                    return
+        if doubleCheckFlag {
+            guard let email = emailTextField.text else { return }
+            guard let username = nameTextField.text else { return }
+            guard let nickname = nicknameTextField.text else { return }
+            guard let password = pwTextField.text else { return }
+            guard let passwordCheck = pwCheckTextField.text else { return }
+            emailTextField.isUserInteractionEnabled = false
+            nameTextField.isUserInteractionEnabled = false
+            nicknameTextField.isUserInteractionEnabled = false
+            pwTextField.isUserInteractionEnabled = false
+            pwCheckTextField.isUserInteractionEnabled = false
+            
+            signUpFlag()
+            
+            if password == passwordCheck && self.signupFlag == true {
+                Auth.auth().createMentor(withEmail: email, username: username, nickname: nickname, password: password, profileImage: profileImage) { (err) in
+                    if err != nil {
+                        self.appDelegate.globalFlag = true
+                        return
+                    }
                 }
+            } else {
+                let alertController = UIAlertController(title: "회원가입 실패", message:
+                    "패스워드가 일치하지 않습니다.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+                }))
+                self.present(alertController, animated: true, completion: nil)
+                self.appDelegate.globalFlag = false
+                resetInputFields()
             }
         } else {
             let alertController = UIAlertController(title: "회원가입 실패", message:
-                "패스워드가 일치하지 않습니다.", preferredStyle: .alert)
+                "별명을 확인해 주세요.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
             }))
             self.present(alertController, animated: true, completion: nil)
-            self.appDelegate.globalFlag = false
-            resetInputFields()
+            self.resetInputFields()
+            return
         }
-        
     }
     
     private func resetInputFields() {
@@ -136,7 +188,7 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
     
     func signUpFlag() {
         if nameTextField.text != "" && emailTextField.text != "" && pwTextField.text != "" && pwCheckTextField.text != "" && phoneNumberTF.text != "" && optTextField.text != "" && nicknameTextField.text != "" {
-            self.flag = true
+            self.signupFlag = true
             appDelegate.globalFlag = true
         } else {
             let alertController = UIAlertController(title: "회원가입 실패", message:
@@ -145,7 +197,7 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
             }))
             self.present(alertController, animated: true, completion: nil)
             resetInputFields()
-            self.flag = false
+            self.signupFlag = false
             appDelegate.globalFlag = false
         }
     }
@@ -159,6 +211,7 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
         pwTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
         emailTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
         nameTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
+        nicknameTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
         phoneNumberTF.setBorderColor(width: 0.5, color: myColor, corner: 5)
         optTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
     }

@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		3A89CEE7F3677ED2B1D186D9 /* Pods_portfolioTabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1720798AF6E25767EAF630 /* Pods_portfolioTabBar.framework */; };
 		7F50C59623010336003753EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F50C59523010336003753EB /* GoogleService-Info.plist */; };
-		7F50C59D230132B4003753EB /* kakaolink_btn_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F50C59C230132B4003753EB /* kakaolink_btn_small.png */; };
+		7FF0A93F230F7AA2009BA27A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0A93E230F7AA2009BA27A /* User.swift */; };
+		7FF0A94B230FC77A009BA27A /* switch_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF0A94A230FC77A009BA27A /* switch_user.png */; };
+		7FF0A94D230FCDDA009BA27A /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0A94C230FCDDA009BA27A /* SettingTableViewCell.swift */; };
 		CE00B99922F90DA30007C90C /* SDMiSaeng.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CECF88C522DEC21D00E1E06C /* SDMiSaeng.ttf */; };
 		CE14BDAD22E2BF8100F205A6 /* MenteeSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE14BDAC22E2BF8100F205A6 /* MenteeSignUpController.swift */; };
 		CE1590E822FD063A005F2337 /* attach.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1590E222FD0639005F2337 /* attach.png */; };
@@ -93,7 +95,9 @@
 		25732F72292472A00318EB15 /* Pods-portfolioTabBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portfolioTabBar.release.xcconfig"; path = "Target Support Files/Pods-portfolioTabBar/Pods-portfolioTabBar.release.xcconfig"; sourceTree = "<group>"; };
 		5A888E9AD83618E659E31EEB /* Pods-portfolioTabBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portfolioTabBar.debug.xcconfig"; path = "Target Support Files/Pods-portfolioTabBar/Pods-portfolioTabBar.debug.xcconfig"; sourceTree = "<group>"; };
 		7F50C59523010336003753EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7F50C59C230132B4003753EB /* kakaolink_btn_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakaolink_btn_small.png; sourceTree = "<group>"; };
+		7FF0A93E230F7AA2009BA27A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7FF0A94A230FC77A009BA27A /* switch_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_user.png; sourceTree = "<group>"; };
+		7FF0A94C230FCDDA009BA27A /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		CD1720798AF6E25767EAF630 /* Pods_portfolioTabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_portfolioTabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE14BDAC22E2BF8100F205A6 /* MenteeSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteeSignUpController.swift; sourceTree = "<group>"; };
 		CE1590E222FD0639005F2337 /* attach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach.png; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 			children = (
 				CE7D339B22F2B40F004A6C6A /* MentorUser.swift */,
 				CE7D339D22F2C1CF004A6C6A /* MenteeUser.swift */,
+				7FF0A93E230F7AA2009BA27A /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 			children = (
 				CECDBBF722FBEBAB0068CBF1 /* Setting.storyboard */,
 				CECDBC1B22FC03480068CBF1 /* SettingController.swift */,
+				7FF0A94C230FCDDA009BA27A /* SettingTableViewCell.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -302,7 +308,6 @@
 		CECF88B822DEBA4200E1E06C /* attached files */ = {
 			isa = PBXGroup;
 			children = (
-				7F50C59C230132B4003753EB /* kakaolink_btn_small.png */,
 				CE1590F422FD39EF005F2337 /* poster.jpg */,
 				CE1590E722FD063A005F2337 /* add.png */,
 				CE1590E222FD0639005F2337 /* attach.png */,
@@ -312,6 +317,7 @@
 				CE1590E622FD0639005F2337 /* more.png */,
 				CECDBC1122FBF7520068CBF1 /* message.png */,
 				CECDBC1222FBF7520068CBF1 /* filter.png */,
+				7FF0A94A230FC77A009BA27A /* switch_user.png */,
 				CECDBC1422FBF7520068CBF1 /* follow.png */,
 				CECDBC0F22FBF7520068CBF1 /* home.png */,
 				CECDBC1322FBF7520068CBF1 /* search.png */,
@@ -432,6 +438,7 @@
 				CEC964EC22E2D7D000EA7BB2 /* mentor.png in Resources */,
 				CECF88A622DEB51C00E1E06C /* Assets.xcassets in Resources */,
 				CECDBBF822FBEBAB0068CBF1 /* Setting.storyboard in Resources */,
+				7FF0A94B230FC77A009BA27A /* switch_user.png in Resources */,
 				CE00B99922F90DA30007C90C /* SDMiSaeng.ttf in Resources */,
 				CECDBBEC22FBC5170068CBF1 /* Home.storyboard in Resources */,
 				CE1590F522FD39EF005F2337 /* poster.jpg in Resources */,
@@ -440,7 +447,6 @@
 				CECDBC1922FBF7520068CBF1 /* search.png in Resources */,
 				CECF88A422DEB51B00E1E06C /* Main.storyboard in Resources */,
 				CE1590EA22FD063A005F2337 /* exit.png in Resources */,
-				7F50C59D230132B4003753EB /* kakaolink_btn_small.png in Resources */,
 				CECF88C422DEC00F00E1E06C /* splash.png in Resources */,
 				CECDBC1622FBF7520068CBF1 /* setting.png in Resources */,
 				CECDBC1822FBF7520068CBF1 /* filter.png in Resources */,
@@ -529,6 +535,7 @@
 				CEF41CC022EAF01100635530 /* CareerViewController.swift in Sources */,
 				CE91B1AF22FD5829008B5303 /* ProfileTabCollectionView.swift in Sources */,
 				CE4BA18422E59971006FEE52 /* PageViewController.swift in Sources */,
+				7FF0A94D230FCDDA009BA27A /* SettingTableViewCell.swift in Sources */,
 				CE93B6C122F00C56009B0CDF /* FirebaseUtilities.swift in Sources */,
 				CECDBBEE22FBC9170068CBF1 /* HomeController.swift in Sources */,
 				CEF41CBE22EAEF2800635530 /* MediaCell.swift in Sources */,
@@ -545,6 +552,7 @@
 				CECEBA8E22E9553100BAF3F1 /* PlaceHolderTextView.swift in Sources */,
 				CE1590EF22FD11F1005F2337 /* HomeMentorCollection.swift in Sources */,
 				CECA665822E7001D007D30A5 /* DayTimeController.swift in Sources */,
+				7FF0A93F230F7AA2009BA27A /* User.swift in Sources */,
 				CEAC5CE023006B85000C39F2 /* CustomCell.swift in Sources */,
 				CEAC5CE123006B85000C39F2 /* PageCell.swift in Sources */,
 				CE91B1AB22FD57E1008B5303 /* ProfileTabCollectionCell.swift in Sources */,

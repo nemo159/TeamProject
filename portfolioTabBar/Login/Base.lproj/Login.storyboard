@@ -458,12 +458,37 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qOu-iE-4hu">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRh-IB-8Ww">
                                         <rect key="frame" x="0.0" y="50" width="334" height="40"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qOu-iE-4hu">
+                                                <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EwN-9y-l5r">
+                                                <rect key="frame" x="266" y="0.0" width="60" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="HtP-a8-lvH"/>
+                                                </constraints>
+                                                <state key="normal" title="중복확인"/>
+                                                <connections>
+                                                    <action selector="doubleCheckButtonPressed:" destination="XA1-Qg-h4G" eventType="touchUpInside" id="FDh-Qf-De8"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="EwN-9y-l5r" firstAttribute="top" secondItem="ZRh-IB-8Ww" secondAttribute="top" id="5dg-L3-m3B"/>
+                                            <constraint firstItem="qOu-iE-4hu" firstAttribute="top" secondItem="EwN-9y-l5r" secondAttribute="top" id="HEH-tU-kKx"/>
+                                            <constraint firstItem="qOu-iE-4hu" firstAttribute="leading" secondItem="ZRh-IB-8Ww" secondAttribute="leading" id="MIU-m2-cXW"/>
+                                            <constraint firstItem="EwN-9y-l5r" firstAttribute="leading" secondItem="qOu-iE-4hu" secondAttribute="trailing" constant="8" id="N0P-GL-TSJ"/>
+                                            <constraint firstItem="qOu-iE-4hu" firstAttribute="bottom" secondItem="EwN-9y-l5r" secondAttribute="bottom" id="NOI-XR-rbu"/>
+                                            <constraint firstAttribute="bottom" secondItem="EwN-9y-l5r" secondAttribute="bottom" id="dXO-bT-zk1"/>
+                                            <constraint firstAttribute="trailing" secondItem="EwN-9y-l5r" secondAttribute="trailing" constant="8" id="iql-Wq-4jm"/>
+                                        </constraints>
+                                    </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Oy-fg-0KZ">
                                         <rect key="frame" x="0.0" y="100" width="334" height="40"/>
                                         <constraints>
@@ -603,7 +628,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7OI-BL-AVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="RCw-c4-sNE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="712" y="721"/>
+            <point key="canvasLocation" x="711.59420289855075" y="720.53571428571422"/>
         </scene>
         <!--Mentor Sign Up Controller-->
         <scene sceneID="4S1-6M-rGO">
@@ -636,12 +661,37 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="02A-Yy-UBL">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iyc-vB-b5A">
                                         <rect key="frame" x="0.0" y="50" width="334" height="40"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="02A-Yy-UBL">
+                                                <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51E-Su-HOk">
+                                                <rect key="frame" x="266" y="0.0" width="60" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="YUi-w5-pmx"/>
+                                                </constraints>
+                                                <state key="normal" title="중복확인"/>
+                                                <connections>
+                                                    <action selector="doubleCheckButtonPressed:" destination="Xyb-MO-YJr" eventType="touchUpInside" id="gPx-nD-RCz"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="02A-Yy-UBL" firstAttribute="leading" secondItem="Iyc-vB-b5A" secondAttribute="leading" id="4q4-GK-7ml"/>
+                                            <constraint firstItem="51E-Su-HOk" firstAttribute="leading" secondItem="02A-Yy-UBL" secondAttribute="trailing" constant="8" id="5cL-dn-0QC"/>
+                                            <constraint firstItem="51E-Su-HOk" firstAttribute="top" secondItem="Iyc-vB-b5A" secondAttribute="top" id="FDH-dc-AWk"/>
+                                            <constraint firstAttribute="bottom" secondItem="51E-Su-HOk" secondAttribute="bottom" id="FIW-Q1-LLi"/>
+                                            <constraint firstAttribute="trailing" secondItem="51E-Su-HOk" secondAttribute="trailing" constant="8" id="X64-j7-3XE"/>
+                                            <constraint firstAttribute="bottom" secondItem="02A-Yy-UBL" secondAttribute="bottom" id="Z2P-Nn-dVH"/>
+                                            <constraint firstItem="02A-Yy-UBL" firstAttribute="top" secondItem="Iyc-vB-b5A" secondAttribute="top" id="kb7-D5-ZrE"/>
+                                        </constraints>
+                                    </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gHn-Zm-x26">
                                         <rect key="frame" x="0.0" y="100" width="334" height="40"/>
                                         <constraints>
@@ -766,12 +816,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PyM-IW-Zw5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1477" y="720"/>
+            <point key="canvasLocation" x="1476.8115942028987" y="719.86607142857144"/>
         </scene>
         <!--Field Controller-->
         <scene sceneID="TbY-9R-aUj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zBQ-4l-GSc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="MentorThird" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hhr-8K-SJ9" customClass="FieldController" customModule="portfolioTabBar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q3C-64-h3Q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -810,6 +859,7 @@
                         <outlet property="fieldTableView" destination="qi2-hG-Cpr" id="h64-1d-h24"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zBQ-4l-GSc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2957.971014492754" y="720.53571428571422"/>
         </scene>
