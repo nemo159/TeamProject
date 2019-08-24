@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet var verifyCheckButton: UIButton!
@@ -73,7 +74,12 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if GIDSignIn.sharedInstance()?.currentUser != nil {
+            emailTextField.text = Auth.auth().currentUser?.email
+            nicknameTextField.text = Auth.auth().currentUser?.displayName
+            emailTextField.isUserInteractionEnabled = false
+            nicknameTextField.isUserInteractionEnabled = false
+        }
         initLayout()
     }
 
@@ -133,6 +139,14 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
         handlePlusPhoto()
     }
     @IBAction func doubleCheckButtonPressed(_ sender: UIButton) {
+        if self.nicknameTextField.text == "" {
+            let alertController = UIAlertController(title: "중복확인", message:
+                "별명을 입력해 주세요.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            }))
+            self.present(alertController, animated: true, completion: nil)
+            self.doubleCheckFlag = false
+        }
         fetchAllUsers()
     }
     

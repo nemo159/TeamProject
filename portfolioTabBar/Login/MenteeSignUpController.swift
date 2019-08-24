@@ -8,8 +8,10 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
+    
     @IBOutlet var phoneButton: UIButton!
     @IBOutlet var verifyButton: UIButton!
     @IBOutlet var otpTextField: UITextField!
@@ -22,16 +24,18 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet var plusPhotoButton: UIButton!
     var signupFlag:Bool = false
     var doubleCheckFlag:Bool = false
-
-    
     var users = [User]()
-    
     private var profileImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        hideKeyboardWhenTappedArroun()
         initLayout()
+        if GIDSignIn.sharedInstance()?.currentUser != nil {
+            emailTextField.text = Auth.auth().currentUser?.email
+            nicknameTextField.text = Auth.auth().currentUser?.displayName
+            emailTextField.isUserInteractionEnabled = false
+            nicknameTextField.isUserInteractionEnabled = false
+        }
     }
     
     func fetchAllUsers() {
@@ -48,7 +52,6 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
             }
             
             for idx in 0 ..< users.count {
-                
                 if users[idx].nickname == self.nicknameTextField.text {
                     let alertController = UIAlertController(title: "중복확인", message:
                         "중복된 별명입니다.", preferredStyle: .alert)
@@ -70,18 +73,6 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
             print("Fetch Users Err in FollowTableView")
         }
     }
-    
-//    func doubleCheck() {
-//        if self.flag == false {
-//            let alertController = UIAlertController(title: "회원가입 실패", message:
-//                "별명을 확인해 주세요.", preferredStyle: .alert)
-//            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
-//            }))
-//            self.present(alertController, animated: true, completion: nil)
-//            self.resetInputFields()
-//            return
-//        }
-//    }
     
     @objc private func handlePlusPhoto() {
         let imagePickerController = UIImagePickerController()
@@ -110,7 +101,16 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
     @IBAction func plusPhotoButtomPressed(_ sender: UIButton) {
         handlePlusPhoto()
     }
+    
     @IBAction func doubleCheckButtonPressed(_ sender: UIButton) {
+        if self.nicknameTextField.text == "" {
+            let alertController = UIAlertController(title: "중복확인", message:
+                "별명을 입력해 주세요.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            }))
+            self.present(alertController, animated: true, completion: nil)
+            self.doubleCheckFlag = false
+        }
         fetchAllUsers()
     }
     
@@ -127,8 +127,8 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
             if err == nil {
                 guard let uid = user?.user.uid else {return}
                 let who = "Mentee User"
-                Database.database().reference().child("users").child(uid).updateChildValues(["phoneNumber":phoneNumber])
                 Database.database().reference().child("users").child(uid).child("who").setValue(who)
+                Database.database().reference().child("users").child(uid).updateChildValues(["phoneNumber":phoneNumber])
                 print("Anonymous account successfully upgraded", user as Any)
                 DispatchQueue.main.async {
                     self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
@@ -136,24 +136,9 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
             } else {
                 print("Error upgrading anonymous account", err as Any)
             }
-            
         }
     }
-    
-    func initLayout() {
-        let myColor: UIColor = UIColor.colorWithRGBHex(hex: 0x58C1F9)
-        
-        //Button
-        plusPhotoButton.setBorderColor(width: 0.5, color: myColor, corner: 140 / 2)
-        //TextField
-        pwCheckTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
-        pwTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
-        emailTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
-        nameTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
-        nicknameTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
-        phoneNumberTF.setBorderColor(width: 0.5, color: myColor, corner: 5)
-        otpTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
-    }
+
     
     @objc private func handleSignUp() {
         if doubleCheckFlag {
@@ -176,7 +161,6 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
                         //                    self.resetInputFields()
                         return
                     }
-                    
                 }
             } else {
                 let alertController = UIAlertController(title: "회원가입 실패", message:
@@ -198,13 +182,11 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
     }
     
     private func resetInputFields() {
-
         emailTextField.isUserInteractionEnabled = true
         nameTextField.isUserInteractionEnabled = true
         nicknameTextField.isUserInteractionEnabled = true
         pwTextField.isUserInteractionEnabled = true
         pwCheckTextField.isUserInteractionEnabled = true
-
     }
     
     func signUpFlag() {
@@ -219,6 +201,20 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
             resetInputFields()
             self.signupFlag = false
         }
+    }
+    
+    func initLayout() {
+        let myColor: UIColor = UIColor.colorWithRGBHex(hex: 0x58C1F9)
+        //Button
+        plusPhotoButton.setBorderColor(width: 0.5, color: myColor, corner: 140 / 2)
+        //TextField
+        pwCheckTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
+        pwTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
+        emailTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
+        nameTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
+        nicknameTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
+        phoneNumberTF.setBorderColor(width: 0.5, color: myColor, corner: 5)
+        otpTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
     }
     
 }
@@ -255,3 +251,4 @@ extension MenteeSignUpController: UIImagePickerControllerDelegate {
 fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
     return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
 }
+

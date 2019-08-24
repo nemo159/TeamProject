@@ -35,11 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                     if let user = user {
                         let uid = user.uid
                         let email = user.email
-                        let name = user.displayName
+                        let nickname = user.displayName
                         let photoUrl = user.photoURL?.absoluteString
                         let ref:DatabaseReference = Database.database().reference()
-                        let itemRef = ref.child("user/\(uid)")
-                        itemRef.setValue(["name": name, "email": email, "profileUrl": photoUrl])
+                        let itemRef = ref.child("users/\(uid)")
+                        itemRef.setValue(["nickname": nickname, "email": email, "profileUrl": photoUrl])
                     }
                 }
                 
