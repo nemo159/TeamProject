@@ -10,14 +10,34 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class SettingController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet var profileImageView : UIImageView!
+class SettingController: UIViewController, GIDSignInUIDelegate {
+    @IBOutlet var profileImageView : CustomImageView!
+    @IBOutlet var nameLabel : UILabel!
     @IBOutlet var nicknameLabel : UILabel!
-    @IBOutlet var emailLabel : UILabel!
+    @IBOutlet weak var mentorMenuStackView: UIStackView!
+    @IBOutlet weak var pointLabel: UILabel!
+    @IBOutlet weak var transformBarButtonItem: UIBarButtonItem!
+    var ref:DatabaseReference!
+    
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initLayout()
+        userInfo()
+        mentorMenu()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        userInfo()
+        mentorMenu()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        userInfo()
+        mentorMenu()
     }
     
     @IBAction func transformButtonPressed(_ sender: UIBarButtonItem) {
@@ -49,21 +69,46 @@ class SettingController: UIViewController, GIDSignInUIDelegate, UITableViewDeleg
         }
     }
     
+    func userInfo() {
+        if Auth.auth().currentUser != nil {
+            ref = Database.database().reference()
+            let uid = Auth.auth().currentUser?.uid ?? "None"
+            Database.database().fetchUser(withUID: uid, completion: {(user) in
+                self.user = user
+                self.profileImageView.loadImage(urlString: (self.user?.profileImageUrl)!)
+                self.nameLabel.text = user.username
+                self.nicknameLabel.text = user.nickname
+            })
+//            ref.child("users").observeSingleEvent(of: .value) { snapshot in
+//                let profileImage = snapshot.childSnapshot(forPath: "\(uid)/profileImageUrl").value
+//                self.profileImageView.loadImage(urlString: profileImage as! String)
+//                let userName = snapshot.childSnapshot(forPath: "\(uid)/username").value
+//                self.nameLabel.text = userName as? String
+//                let nickname = snapshot.childSnapshot(forPath: "\(uid)/nickname").value
+//                self.nicknameLabel.text = nickname as? String
+//            }
+        }
+    }
+    
+    func mentorMenu() {
+        let uid = Auth.auth().currentUser?.uid ?? "None"
+        Database.database().fetchUser(withUID: uid, completion: {(user) in
+            self.user = user
+            if user.who == "Mentor User" {
+                self.mentorMenuStackView.isHidden = false
+                self.transformBarButtonItem.isEnabled = false
+                self.transformBarButtonItem.tintColor = UIColor.clear
+            } else {
+                self.mentorMenuStackView.isHidden = true
+                self.transformBarButtonItem.isEnabled = true
+            }
+        })
+    }
+    
     func initLayout() {
         let myColor: UIColor = UIColor.colorWithRGBHex(hex: 0x58C1F9)
         //ImageView
-        profileImageView.setBorderColor(width: 0.5, color: myColor, corner: 140 / 2)
-    }
-    
-    // MARK: - Tableview Methods
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath)
-        return cell
+        profileImageView.setBorderColor(width: 0.5, color: myColor, corner: 84 / 2)
     }
     
 }

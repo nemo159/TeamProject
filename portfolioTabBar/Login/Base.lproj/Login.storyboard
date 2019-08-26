@@ -401,7 +401,7 @@
         <!--Mentee Sign Up Controller-->
         <scene sceneID="Q6K-6c-CkD">
             <objects>
-                <viewController id="XA1-Qg-h4G" customClass="MenteeSignUpController" customModule="portfolioTabBar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenteeSignUpController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XA1-Qg-h4G" customClass="MenteeSignUpController" customModule="portfolioTabBar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sva-tj-MRv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

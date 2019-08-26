@@ -31,6 +31,15 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         initLayout()
         if GIDSignIn.sharedInstance()?.currentUser != nil {
+            let url = URL(string: (Auth.auth().currentUser?.photoURL!.absoluteString)!)
+            do {
+                let data = try Data(contentsOf: url!)
+                let image = UIImage(data: data)
+                self.plusPhotoButton.setImage(image, for: .normal)
+//                self.plusPhotoButton.contentMode = .scaleAspectFill
+            }catch let err {
+                print("Error : \(err.localizedDescription)")
+            }
             emailTextField.text = Auth.auth().currentUser?.email
             nicknameTextField.text = Auth.auth().currentUser?.displayName
             emailTextField.isUserInteractionEnabled = false
@@ -141,7 +150,7 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
 
     
     @objc private func handleSignUp() {
-        if doubleCheckFlag {
+        if doubleCheckFlag || GIDSignIn.sharedInstance()?.currentUser != nil {
             guard let email = emailTextField.text else { return }
             guard let username = nameTextField.text else { return }
             guard let nickname = nicknameTextField.text else { return }

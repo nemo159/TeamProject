@@ -75,6 +75,14 @@ class MentorSignUpController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         if GIDSignIn.sharedInstance()?.currentUser != nil {
+            let url = URL(string: (Auth.auth().currentUser?.photoURL!.absoluteString)!)
+            do {
+                let data = try Data(contentsOf: url!)
+                let image = UIImage(data: data)
+                self.plusPhotoButton.setImage(image, for: .normal)
+            }catch let err {
+                print("Error : \(err.localizedDescription)")
+            }
             emailTextField.text = Auth.auth().currentUser?.email
             nicknameTextField.text = Auth.auth().currentUser?.displayName
             emailTextField.isUserInteractionEnabled = false

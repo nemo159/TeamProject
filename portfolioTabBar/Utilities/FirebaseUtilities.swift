@@ -73,7 +73,6 @@ extension Auth {
                 }
             }
         })
-
     }
     private func uploadMentee(withUID uid: String, username: String, nickname: String?, profileImageUrl: String? = nil, completion: @escaping (() -> ())) {
         var dictionaryValues = ["username": username]

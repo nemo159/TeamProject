@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     var window: UIWindow?
     
     var globalFlag: Bool? = false
-    
+        
     //Google Login
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         if error != nil {
@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                         let photoUrl = user.photoURL?.absoluteString
                         let ref:DatabaseReference = Database.database().reference()
                         let itemRef = ref.child("users/\(uid)")
-                        itemRef.setValue(["nickname": nickname, "email": email, "profileUrl": photoUrl])
+                        itemRef.setValue(["nickname": nickname, "email": email, "profileImageUrl": photoUrl])
                     }
                 }
                 
