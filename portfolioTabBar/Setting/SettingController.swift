@@ -14,9 +14,10 @@ class SettingController: UIViewController, GIDSignInUIDelegate {
     @IBOutlet var profileImageView : CustomImageView!
     @IBOutlet var nameLabel : UILabel!
     @IBOutlet var nicknameLabel : UILabel!
-    @IBOutlet weak var mentorMenuStackView: UIStackView!
     @IBOutlet weak var pointLabel: UILabel!
     @IBOutlet weak var transformBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var postButton: UIButton!
     var ref:DatabaseReference!
     
     var user: User?
@@ -79,14 +80,6 @@ class SettingController: UIViewController, GIDSignInUIDelegate {
                 self.nameLabel.text = user.username
                 self.nicknameLabel.text = user.nickname
             })
-//            ref.child("users").observeSingleEvent(of: .value) { snapshot in
-//                let profileImage = snapshot.childSnapshot(forPath: "\(uid)/profileImageUrl").value
-//                self.profileImageView.loadImage(urlString: profileImage as! String)
-//                let userName = snapshot.childSnapshot(forPath: "\(uid)/username").value
-//                self.nameLabel.text = userName as? String
-//                let nickname = snapshot.childSnapshot(forPath: "\(uid)/nickname").value
-//                self.nicknameLabel.text = nickname as? String
-//            }
         }
     }
     
@@ -95,11 +88,13 @@ class SettingController: UIViewController, GIDSignInUIDelegate {
         Database.database().fetchUser(withUID: uid, completion: {(user) in
             self.user = user
             if user.who == "Mentor User" {
-                self.mentorMenuStackView.isHidden = false
+                self.postImageView.isHidden = false
+                self.postButton.isHidden = false
                 self.transformBarButtonItem.isEnabled = false
                 self.transformBarButtonItem.tintColor = UIColor.clear
             } else {
-                self.mentorMenuStackView.isHidden = true
+                self.postImageView.isHidden = true
+                self.postButton.isHidden = true
                 self.transformBarButtonItem.isEnabled = true
             }
         })
@@ -112,6 +107,3 @@ class SettingController: UIViewController, GIDSignInUIDelegate {
     }
     
 }
-
-
-//멘토일때 지역/분야/시간 관리 및 본인 포스트 관리

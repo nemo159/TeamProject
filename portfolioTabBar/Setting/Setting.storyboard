@@ -155,79 +155,17 @@
                                             <constraint firstItem="QEn-Oi-9Mx" firstAttribute="leading" secondItem="xXZ-Gp-tOo" secondAttribute="trailing" constant="10" id="iaX-g2-cDc"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WBC-3I-4Ed">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNv-jn-JHu">
                                         <rect key="frame" x="0.0" y="103.5" width="414" height="46.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="matching.png" translatesAutoresizingMaskIntoConstraints="NO" id="33d-wm-zzK">
-                                                <rect key="frame" x="10" y="5" width="36.5" height="36.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="36.5" id="3zw-gD-PW6"/>
-                                                </constraints>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VH-1u-8zm">
-                                                <rect key="frame" x="56.5" y="10" width="357.5" height="26.5"/>
-                                                <state key="normal" title="Matching History">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="33d-wm-zzK" secondAttribute="bottom" constant="5" id="5Cx-gO-Ffm"/>
-                                            <constraint firstItem="1VH-1u-8zm" firstAttribute="leading" secondItem="33d-wm-zzK" secondAttribute="trailing" constant="10" id="8oH-53-oq0"/>
-                                            <constraint firstAttribute="trailing" secondItem="1VH-1u-8zm" secondAttribute="trailing" id="9fp-42-Tt6"/>
-                                            <constraint firstAttribute="bottom" secondItem="1VH-1u-8zm" secondAttribute="bottom" constant="10" id="AOo-As-cqk"/>
-                                            <constraint firstItem="33d-wm-zzK" firstAttribute="leading" secondItem="WBC-3I-4Ed" secondAttribute="leading" constant="10" id="B02-nS-fuf"/>
-                                            <constraint firstItem="33d-wm-zzK" firstAttribute="top" secondItem="WBC-3I-4Ed" secondAttribute="top" constant="5" id="STJ-NV-ZQg"/>
-                                            <constraint firstItem="1VH-1u-8zm" firstAttribute="top" secondItem="WBC-3I-4Ed" secondAttribute="top" constant="10" id="esb-Hj-pCd"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="CYT-9u-apG"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aqJ-xB-zm3">
-                                <rect key="frame" x="0.0" y="305" width="414" height="100"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q96-BW-d2g">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="47.5"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_edit.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZIc-Ej-s93">
-                                                <rect key="frame" x="10" y="5" width="36.5" height="37.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="36.5" id="L0q-Fl-v6K"/>
-                                                </constraints>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5aY-RN-gHO">
-                                                <rect key="frame" x="56.5" y="10" width="357.5" height="27.5"/>
-                                                <state key="normal" title="Profile Management">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="5aY-RN-gHO" secondAttribute="trailing" id="4N3-2U-eQB"/>
-                                            <constraint firstItem="5aY-RN-gHO" firstAttribute="top" secondItem="Q96-BW-d2g" secondAttribute="top" constant="10" id="CC0-J5-yEe"/>
-                                            <constraint firstItem="ZIc-Ej-s93" firstAttribute="top" secondItem="Q96-BW-d2g" secondAttribute="top" constant="5" id="KRc-IP-LEN"/>
-                                            <constraint firstAttribute="bottom" secondItem="ZIc-Ej-s93" secondAttribute="bottom" constant="5" id="MAz-hV-Etr"/>
-                                            <constraint firstAttribute="bottom" secondItem="5aY-RN-gHO" secondAttribute="bottom" constant="10" id="bEB-eb-7wH"/>
-                                            <constraint firstItem="5aY-RN-gHO" firstAttribute="leading" secondItem="ZIc-Ej-s93" secondAttribute="trailing" constant="10" id="ls1-C9-67X"/>
-                                            <constraint firstItem="ZIc-Ej-s93" firstAttribute="leading" secondItem="Q96-BW-d2g" secondAttribute="leading" constant="10" id="qJP-RJ-FjP"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNv-jn-JHu">
-                                        <rect key="frame" x="0.0" y="52.5" width="414" height="47.5"/>
-                                        <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="post.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Ie-1g-EjE">
-                                                <rect key="frame" x="10" y="5" width="37" height="37.5"/>
+                                                <rect key="frame" x="10" y="5" width="37" height="36.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="37" id="Slc-0r-ejF"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHT-WD-OOf">
-                                                <rect key="frame" x="57" y="10" width="357" height="27.5"/>
+                                                <rect key="frame" x="57" y="10" width="357" height="26.5"/>
                                                 <state key="normal" title="Post Management">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -246,19 +184,16 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="QOZ-Jz-zGn"/>
+                                    <constraint firstAttribute="height" constant="150" id="CYT-9u-apG"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aqJ-xB-zm3" firstAttribute="leading" secondItem="uaH-h1-RNh" secondAttribute="leading" id="6R3-44-vld"/>
                             <constraint firstItem="etd-Cl-7ka" firstAttribute="leading" secondItem="uaH-h1-RNh" secondAttribute="leading" id="Jlm-IE-MEx"/>
                             <constraint firstItem="ewq-UI-HRH" firstAttribute="leading" secondItem="uaH-h1-RNh" secondAttribute="leading" id="UgF-kH-BeK"/>
-                            <constraint firstItem="uaH-h1-RNh" firstAttribute="trailing" secondItem="aqJ-xB-zm3" secondAttribute="trailing" id="WZP-4R-skF"/>
                             <constraint firstItem="uaH-h1-RNh" firstAttribute="trailing" secondItem="etd-Cl-7ka" secondAttribute="trailing" id="cr0-1o-Jb0"/>
                             <constraint firstItem="ewq-UI-HRH" firstAttribute="top" secondItem="etd-Cl-7ka" secondAttribute="bottom" constant="50" id="fiP-oG-6Gs"/>
-                            <constraint firstItem="aqJ-xB-zm3" firstAttribute="top" secondItem="ewq-UI-HRH" secondAttribute="bottom" constant="5" id="sYm-0E-uwl"/>
                             <constraint firstItem="etd-Cl-7ka" firstAttribute="top" secondItem="uaH-h1-RNh" secondAttribute="top" id="tPB-Zl-J4B"/>
                             <constraint firstItem="uaH-h1-RNh" firstAttribute="trailing" secondItem="ewq-UI-HRH" secondAttribute="trailing" id="uog-2I-nqU"/>
                         </constraints>
@@ -283,10 +218,11 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mentorMenuStackView" destination="aqJ-xB-zm3" id="z5u-Cy-thz"/>
                         <outlet property="nameLabel" destination="JoF-hH-YTu" id="t7M-2Z-2fH"/>
                         <outlet property="nicknameLabel" destination="Ijh-Hj-Og8" id="0Xf-zy-aR3"/>
                         <outlet property="pointLabel" destination="cff-lH-iCQ" id="Y1G-Vg-ko7"/>
+                        <outlet property="postButton" destination="tHT-WD-OOf" id="vyD-32-t0S"/>
+                        <outlet property="postImageView" destination="1Ie-1g-EjE" id="kmx-Sb-UWn"/>
                         <outlet property="profileImageView" destination="Md2-us-zUL" id="YFE-uY-SQM"/>
                         <outlet property="transformBarButtonItem" destination="ZZh-QP-Yte" id="V7e-am-rNa"/>
                     </connections>
@@ -298,13 +234,11 @@
     </scenes>
     <resources>
         <image name="logout.png" width="21" height="21"/>
-        <image name="matching.png" width="21.75" height="21.75"/>
         <image name="payment.png" width="23.200000762939453" height="23.200000762939453"/>
         <image name="post.png" width="21.75" height="21.75"/>
         <image name="profile_edit.png" width="21.75" height="21.75"/>
         <image name="review.png" width="23.200000762939453" height="23.200000762939453"/>
         <image name="setting.png" width="21" height="21"/>
         <image name="switch_user.png" width="24" height="24"/>
-        <image name="user_edit.png" width="32" height="32"/>
     </resources>
 </document>
