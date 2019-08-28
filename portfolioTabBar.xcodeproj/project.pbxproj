@@ -17,6 +17,8 @@
 		7F50C59623010336003753EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F50C59523010336003753EB /* GoogleService-Info.plist */; };
 		7FF0A93F230F7AA2009BA27A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0A93E230F7AA2009BA27A /* User.swift */; };
 		7FF0A94B230FC77A009BA27A /* switch_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF0A94A230FC77A009BA27A /* switch_user.png */; };
+		7FFDBE9123164D6E008C9B4A /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FFDBE9023164D6E008C9B4A /* save.png */; };
+		7FFDBE932316546B008C9B4A /* ChangeUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFDBE922316546B008C9B4A /* ChangeUserInfoViewController.swift */; };
 		CE00B99922F90DA30007C90C /* SDMiSaeng.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CECF88C522DEC21D00E1E06C /* SDMiSaeng.ttf */; };
 		CE14BDAD22E2BF8100F205A6 /* MenteeSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE14BDAC22E2BF8100F205A6 /* MenteeSignUpController.swift */; };
 		CE1590E822FD063A005F2337 /* attach.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1590E222FD0639005F2337 /* attach.png */; };
@@ -108,6 +110,8 @@
 		7F50C59523010336003753EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7FF0A93E230F7AA2009BA27A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7FF0A94A230FC77A009BA27A /* switch_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_user.png; sourceTree = "<group>"; };
+		7FFDBE9023164D6E008C9B4A /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+		7FFDBE922316546B008C9B4A /* ChangeUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserInfoViewController.swift; sourceTree = "<group>"; };
 		CD1720798AF6E25767EAF630 /* Pods_portfolioTabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_portfolioTabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE14BDAC22E2BF8100F205A6 /* MenteeSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteeSignUpController.swift; sourceTree = "<group>"; };
 		CE1590E222FD0639005F2337 /* attach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attach.png; sourceTree = "<group>"; };
@@ -271,6 +275,7 @@
 			children = (
 				CECDBBF722FBEBAB0068CBF1 /* Setting.storyboard */,
 				CECDBC1B22FC03480068CBF1 /* SettingController.swift */,
+				7FFDBE922316546B008C9B4A /* ChangeUserInfoViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 				CE1590E522FD0639005F2337 /* logout.png */,
 				7F025C042313C0EF003662CC /* review.png */,
 				CE1590E622FD0639005F2337 /* more.png */,
+				7FFDBE9023164D6E008C9B4A /* save.png */,
 				7F025C0B2313C2E8003662CC /* profile_edit.png */,
 				7F025C0A2313C2E8003662CC /* user_edit.png */,
 				CECDBC1122FBF7520068CBF1 /* message.png */,
@@ -473,6 +479,7 @@
 				CECDBBF322FBEB820068CBF1 /* Follow.storyboard in Resources */,
 				CECDBBF622FBEB990068CBF1 /* Message.storyboard in Resources */,
 				CECA665422E6A94F007D30A5 /* Login.storyboard in Resources */,
+				7FFDBE9123164D6E008C9B4A /* save.png in Resources */,
 				CE1590E922FD063A005F2337 /* back.png in Resources */,
 				CE8EAF8C22E1714F003D01C8 /* profile.png in Resources */,
 				CECDBC1A22FBF7520068CBF1 /* follow.png in Resources */,
@@ -551,6 +558,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEF41CBA22EAEF2800635530 /* MediaCollection.swift in Sources */,
+				7FFDBE932316546B008C9B4A /* ChangeUserInfoViewController.swift in Sources */,
 				CECA665322E6A47E007D30A5 /* Extensions.swift in Sources */,
 				CE4BA18222E59918006FEE52 /* PageController.swift in Sources */,
 				CEF41CC022EAF01100635530 /* CareerViewController.swift in Sources */,

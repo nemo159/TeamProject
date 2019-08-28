@@ -36,7 +36,6 @@ class MenteeSignUpController: UIViewController, UINavigationControllerDelegate {
                 let data = try Data(contentsOf: url!)
                 let image = UIImage(data: data)
                 self.plusPhotoButton.setImage(image, for: .normal)
-//                self.plusPhotoButton.contentMode = .scaleAspectFill
             }catch let err {
                 print("Error : \(err.localizedDescription)")
             }

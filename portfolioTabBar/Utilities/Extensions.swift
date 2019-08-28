@@ -43,6 +43,14 @@ extension UIButton {
     }
 }
 
+// MARK: - custom textview methods
+extension UITextView {
+    func setBorderColor(width:CGFloat, color:UIColor) -> Void {
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = width
+    }
+}
+
 // MARK: - custom imageview methods
 extension UIImageView {
     func setBorderColor(width:CGFloat, color:UIColor, corner:CGFloat) -> Void {
