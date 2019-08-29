@@ -99,7 +99,7 @@ extension Auth {
 
 extension Storage {
     // Mark: - Custom FireBase Storage with Mentor SignUp
-    fileprivate func uploadUserProfileImage(profileImage: UIImage, completion: @escaping (String) -> ()) {
+    func uploadUserProfileImage(profileImage: UIImage, completion: @escaping (String) -> ()) {
         guard let uploadData = profileImage.jpegData(compressionQuality: 1) else { return } //changed from 0.3
         
         let storageRef = Storage.storage().reference().child("profile_images").child(NSUUID().uuidString)

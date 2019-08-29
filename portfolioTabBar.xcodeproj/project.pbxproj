@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		3A89CEE7F3677ED2B1D186D9 /* Pods_portfolioTabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1720798AF6E25767EAF630 /* Pods_portfolioTabBar.framework */; };
 		7F025C052313C0EF003662CC /* review.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F025C042313C0EF003662CC /* review.png */; };
-		7F025C072313C148003662CC /* payment.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F025C062313C148003662CC /* payment.png */; };
 		7F025C092313C293003662CC /* matching.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F025C082313C293003662CC /* matching.png */; };
 		7F025C0C2313C2E8003662CC /* user_edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F025C0A2313C2E8003662CC /* user_edit.png */; };
 		7F025C0D2313C2E8003662CC /* profile_edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F025C0B2313C2E8003662CC /* profile_edit.png */; };
 		7F025C0F2313C501003662CC /* post.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F025C0E2313C501003662CC /* post.png */; };
+		7F0F2F2223177FE900F682DB /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0F2F2123177FE900F682DB /* coin.png */; };
+		7F0F2F242317A7AE00F682DB /* FIndPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0F2F232317A7AE00F682DB /* FIndPasswordViewController.swift */; };
 		7F50C59623010336003753EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F50C59523010336003753EB /* GoogleService-Info.plist */; };
 		7FF0A93F230F7AA2009BA27A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF0A93E230F7AA2009BA27A /* User.swift */; };
 		7FF0A94B230FC77A009BA27A /* switch_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF0A94A230FC77A009BA27A /* switch_user.png */; };
@@ -102,11 +103,12 @@
 		25732F72292472A00318EB15 /* Pods-portfolioTabBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portfolioTabBar.release.xcconfig"; path = "Target Support Files/Pods-portfolioTabBar/Pods-portfolioTabBar.release.xcconfig"; sourceTree = "<group>"; };
 		5A888E9AD83618E659E31EEB /* Pods-portfolioTabBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portfolioTabBar.debug.xcconfig"; path = "Target Support Files/Pods-portfolioTabBar/Pods-portfolioTabBar.debug.xcconfig"; sourceTree = "<group>"; };
 		7F025C042313C0EF003662CC /* review.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review.png; sourceTree = "<group>"; };
-		7F025C062313C148003662CC /* payment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = payment.png; sourceTree = "<group>"; };
 		7F025C082313C293003662CC /* matching.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = matching.png; sourceTree = "<group>"; };
 		7F025C0A2313C2E8003662CC /* user_edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_edit.png; sourceTree = "<group>"; };
 		7F025C0B2313C2E8003662CC /* profile_edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_edit.png; sourceTree = "<group>"; };
 		7F025C0E2313C501003662CC /* post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post.png; sourceTree = "<group>"; };
+		7F0F2F2123177FE900F682DB /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
+		7F0F2F232317A7AE00F682DB /* FIndPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIndPasswordViewController.swift; sourceTree = "<group>"; };
 		7F50C59523010336003753EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7FF0A93E230F7AA2009BA27A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7FF0A94A230FC77A009BA27A /* switch_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_user.png; sourceTree = "<group>"; };
@@ -337,8 +339,8 @@
 				CECDBC1222FBF7520068CBF1 /* filter.png */,
 				7F025C0E2313C501003662CC /* post.png */,
 				7F025C082313C293003662CC /* matching.png */,
-				7F025C062313C148003662CC /* payment.png */,
 				7FF0A94A230FC77A009BA27A /* switch_user.png */,
+				7F0F2F2123177FE900F682DB /* coin.png */,
 				CECDBC1422FBF7520068CBF1 /* follow.png */,
 				CECDBC0F22FBF7520068CBF1 /* home.png */,
 				CECDBC1322FBF7520068CBF1 /* search.png */,
@@ -357,6 +359,7 @@
 			children = (
 				CECA665622E6A94F007D30A5 /* Login.storyboard */,
 				CECF88DE22DEF3E100E1E06C /* LoginViewController.swift */,
+				7F0F2F232317A7AE00F682DB /* FIndPasswordViewController.swift */,
 				CE4BA18122E59918006FEE52 /* PageController.swift */,
 				CE4BA18322E59971006FEE52 /* PageViewController.swift */,
 				CE14BDAC22E2BF8100F205A6 /* MenteeSignUpController.swift */,
@@ -459,6 +462,7 @@
 				CEC964EC22E2D7D000EA7BB2 /* mentor.png in Resources */,
 				7F025C0C2313C2E8003662CC /* user_edit.png in Resources */,
 				CECF88A622DEB51C00E1E06C /* Assets.xcassets in Resources */,
+				7F0F2F2223177FE900F682DB /* coin.png in Resources */,
 				CECDBBF822FBEBAB0068CBF1 /* Setting.storyboard in Resources */,
 				7FF0A94B230FC77A009BA27A /* switch_user.png in Resources */,
 				CE00B99922F90DA30007C90C /* SDMiSaeng.ttf in Resources */,
@@ -484,7 +488,6 @@
 				CE8EAF8C22E1714F003D01C8 /* profile.png in Resources */,
 				CECDBC1A22FBF7520068CBF1 /* follow.png in Resources */,
 				CECDBC1522FBF7520068CBF1 /* home.png in Resources */,
-				7F025C072313C148003662CC /* payment.png in Resources */,
 				CE1590EB22FD063A005F2337 /* logout.png in Resources */,
 				CE1590ED22FD063A005F2337 /* add.png in Resources */,
 				7F025C0F2313C501003662CC /* post.png in Resources */,
@@ -585,6 +588,7 @@
 				CEAC5CE123006B85000C39F2 /* PageCell.swift in Sources */,
 				CE91B1AB22FD57E1008B5303 /* ProfileTabCollectionCell.swift in Sources */,
 				CEF41CBB22EAEF2800635530 /* LicenseCollection.swift in Sources */,
+				7F0F2F242317A7AE00F682DB /* FIndPasswordViewController.swift in Sources */,
 				CE91B1AD22FD57F9008B5303 /* ProfileViewCollectionCell.swift in Sources */,
 				CEF41CBD22EAEF2800635530 /* LicenseCell.swift in Sources */,
 				CEAC5CD92300481B000C39F2 /* ProfileImageTableCell.swift in Sources */,

@@ -12,15 +12,18 @@ import Firebase
 class ChangeUserInfoViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet var valueTextView: [UITextView]!
     @IBOutlet weak var nicknameTextField: UITextField!
-    @IBOutlet weak var pwTextField: UITextField!
+    @IBOutlet weak var currentPwTextField: UITextField!
+    @IBOutlet weak var newPwTextField: UITextField!
     @IBOutlet weak var pwCheckTextField: UITextField!
     @IBOutlet weak var plusPhotoButton: UIButton!
     
     var users = [User]() //allUser
     var user: User? //User
     var doubleCheckFlag:Bool = false
+    var pwFlag:Bool = false
     private var profileImage: UIImage?
     var ref:DatabaseReference!
+    var profileImageUrls: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,19 +47,45 @@ class ChangeUserInfoViewController: UIViewController, UINavigationControllerDele
         fetchAllUsers()
     }
     
+    @IBAction func passwordCheckButtonPressed(_ sender: UIButton) {
+        passwordCheck()
+    }
+    
     @IBAction func saveBarButtonPressed(_ sender: UIBarButtonItem) {
-        guard let nickname = nicknameTextField.text else { return }
-        guard let uid = user?.uid else { return }
-        if doubleCheckFlag {
-            ref.child("users").child(uid).updateChildValues(["nickname": nickname])
+        let nickname = nicknameTextField.text
+        let pw = newPwTextField.text
+        let pwCheck = pwCheckTextField.text
+        let uid = user?.uid
+        
+        let url = user?.profileImageUrl
+        let storageRef = Storage.storage().reference(forURL: url!)
+        storageRef.delete { error in
+            if let error = error {
+                print(error)
+            } else {
+                print("delete success??????????????????????")
+            }
+        }
+    
+        if let profileImages: UIImage = profileImage {
+            Storage.storage().uploadUserProfileImage(profileImage: profileImages, completion: { (profileImageUrl) in
+              Database.database().reference().child("users").child(uid!).updateChildValues(["profileImageUrl": profileImageUrl])
+                print("URL : \(profileImageUrl) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            })
+        }
+
+        if doubleCheckFlag && pw == pwCheck && pwFlag {
+            ref.child("users").child(uid!).updateChildValues(["nickname": nickname!])
+            changePassword()
             self.navigationController?.popViewController(animated: true)
         } else {
             let alertController = UIAlertController(title: "정보변경 실패", message:
-                "별명을 확인해 주세요.", preferredStyle: .alert)
+                "입력하지 않은 항목이 있습니다.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
             }))
             self.present(alertController, animated: true, completion: nil)
             self.doubleCheckFlag = false
+            self.pwFlag = false
             self.resetInputFields()
             return
         }
@@ -69,10 +98,12 @@ class ChangeUserInfoViewController: UIViewController, UINavigationControllerDele
         //textView
         for i in 0..<3 {
             valueTextView[i].setBorderColor(width: 0.5, color: myColor)
+            valueTextView[i].isEditable = false
         }
         //textField
         nicknameTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
-        pwTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
+        currentPwTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
+        newPwTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
         pwCheckTextField.setBorderColor(width: 0.5, color: myColor, corner: 5)
     }
     
@@ -85,8 +116,64 @@ class ChangeUserInfoViewController: UIViewController, UINavigationControllerDele
     
     private func resetInputFields() {
         nicknameTextField.isUserInteractionEnabled = true
-        pwTextField.isUserInteractionEnabled = true
+        currentPwTextField.isUserInteractionEnabled = true
+        newPwTextField.isUserInteractionEnabled = true
         pwCheckTextField.isUserInteractionEnabled = true
+    }
+    
+    func passwordCheck() {
+        let pw = newPwTextField.text
+        let pwCheck = pwCheckTextField.text
+        if currentPwTextField.text == newPwTextField.text && currentPwTextField.text == pwCheckTextField.text {
+            let alertController = UIAlertController(title: "비밀번호 확인", message:
+                "현재 비밀번호와 새로운 비밀번호가 같습니다.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            }))
+            self.present(alertController, animated: true, completion: nil)
+            self.pwFlag = false
+        } else if currentPwTextField.text == nil {
+            let alertController = UIAlertController(title: "비밀번호 확인", message:
+                "현재 비밀번호 입력을 부탁드립니다.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            }))
+            self.present(alertController, animated: true, completion: nil)
+            self.pwFlag = false
+        } else if pw != pwCheck {
+            let alertController = UIAlertController(title: "비밀번호 확인", message:
+                "비밀번호가 일치하지 않습니다.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            }))
+            self.present(alertController, animated: true, completion: nil)
+            self.pwFlag = false
+        } else {
+            let alertController = UIAlertController(title: "비밀번호 확인", message:
+                "사용가능한 비밀번호 입니다.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            }))
+            self.present(alertController, animated: true, completion: nil)
+            self.pwFlag = true
+        }
+    }
+    
+    func changePassword() {
+        let user = Auth.auth().currentUser
+        let credential = EmailAuthProvider.credential(withEmail: (user?.email)!, password: currentPwTextField.text!)
+        user?.reauthenticate(with: credential, completion: { (result, error) in
+            if error != nil {
+                //..read error message
+                print("Error : \(error!)")
+            } else {
+                //.. go on
+                let newPW = self.newPwTextField.text
+                Auth.auth().currentUser?.updatePassword(to: newPW!) { (err) in
+                    if err != nil {
+                        print("Password Change Error : \(err!.localizedDescription)")
+                    } else {
+                        print("Password Change Success!!!")
+                    }
+                }
+            }
+        })
     }
     
     func userInfo() {

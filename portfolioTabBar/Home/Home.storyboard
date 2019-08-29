@@ -33,7 +33,7 @@
         <!--청출어람-->
         <scene sceneID="xtB-kU-QhM">
             <objects>
-                <viewController id="HC2-Th-KOl" customClass="HomeController" customModule="portfolioTabBar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HC2-Th-KOl" customClass="HomeController" customModule="portfolioTabBar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mLA-h7-HXa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

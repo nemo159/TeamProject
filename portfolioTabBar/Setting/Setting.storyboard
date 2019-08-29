@@ -134,7 +134,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sx-wq-Fq9">
                                         <rect key="frame" x="0.0" y="51.5" width="414" height="47"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="payment.png" translatesAutoresizingMaskIntoConstraints="NO" id="xXZ-Gp-tOo">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin.png" translatesAutoresizingMaskIntoConstraints="NO" id="xXZ-Gp-tOo">
                                                 <rect key="frame" x="10" y="5" width="37" height="37"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="37" id="kH7-3O-nkl"/>
@@ -142,7 +142,7 @@
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEn-Oi-9Mx">
                                                 <rect key="frame" x="57" y="10" width="357" height="27"/>
-                                                <state key="normal" title="Payment Method">
+                                                <state key="normal" title="Point History">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
@@ -253,8 +253,8 @@
                                     <action selector="plusPhotoButtonPressed:" destination="ZNa-ET-oQK" eventType="touchUpInside" id="2l7-86-sX1"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YKe-Bx-lSM">
-                                <rect key="frame" x="40" y="160" width="334" height="120"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YKe-Bx-lSM">
+                                <rect key="frame" x="40" y="160" width="334" height="166"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69k-RD-Jwh">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -287,8 +287,14 @@
                                             <constraint firstItem="8U9-0L-AQP" firstAttribute="top" secondItem="5f5-Qy-OR6" secondAttribute="top" id="Vve-td-MaV"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bbd-rD-cn6">
-                                        <rect key="frame" x="0.0" y="40" width="334" height="40"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jsb-ob-OZc">
+                                        <rect key="frame" x="0.0" y="42" width="334" height="40"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bbd-rD-cn6">
+                                        <rect key="frame" x="0.0" y="84" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="T9y-VH-kGg"/>
                                         </constraints>
@@ -296,29 +302,52 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password Check" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TUC-wF-8kg">
-                                        <rect key="frame" x="0.0" y="80" width="334" height="40"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvx-Zl-NhL">
+                                        <rect key="frame" x="0.0" y="126" width="334" height="40"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password Check" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DxA-Fu-3hu">
+                                                <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TDq-ZG-zqY">
+                                                <rect key="frame" x="266" y="0.0" width="60" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="rpX-jI-tDd"/>
+                                                </constraints>
+                                                <state key="normal" title="Check"/>
+                                                <connections>
+                                                    <action selector="doubleCheckedButtonPressed:" destination="ZNa-ET-oQK" eventType="touchUpInside" id="STG-RV-Liw"/>
+                                                    <action selector="passwordCheckButtonPressed:" destination="ZNa-ET-oQK" eventType="touchUpInside" id="Kw8-eb-Vy4"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="faF-NG-WsL"/>
+                                            <constraint firstItem="TDq-ZG-zqY" firstAttribute="leading" secondItem="DxA-Fu-3hu" secondAttribute="trailing" constant="8" id="3wz-t2-hL1"/>
+                                            <constraint firstAttribute="trailing" secondItem="TDq-ZG-zqY" secondAttribute="trailing" constant="8" id="6eG-K0-jo1"/>
+                                            <constraint firstAttribute="bottom" secondItem="TDq-ZG-zqY" secondAttribute="bottom" id="NE8-oT-yVg"/>
+                                            <constraint firstItem="TDq-ZG-zqY" firstAttribute="top" secondItem="bvx-Zl-NhL" secondAttribute="top" id="V5M-Fz-2FL"/>
+                                            <constraint firstItem="DxA-Fu-3hu" firstAttribute="bottom" secondItem="TDq-ZG-zqY" secondAttribute="bottom" id="Xce-vl-dVk"/>
+                                            <constraint firstItem="DxA-Fu-3hu" firstAttribute="top" secondItem="TDq-ZG-zqY" secondAttribute="top" id="guV-JT-rAN"/>
+                                            <constraint firstItem="DxA-Fu-3hu" firstAttribute="leading" secondItem="bvx-Zl-NhL" secondAttribute="leading" id="t24-8X-mxe"/>
                                         </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                    </textField>
+                                    </view>
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mlO-bw-b6U">
-                                <rect key="frame" x="40" y="325" width="334" height="90"/>
+                                <rect key="frame" x="40" y="371" width="334" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="bTT-lM-lYh"/>
+                                    <constraint firstAttribute="height" constant="70" id="bTT-lM-lYh"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Fh-te-qag">
-                                <rect key="frame" x="40" y="290" width="334" height="30"/>
+                                <rect key="frame" x="40" y="336" width="334" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지역 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcB-Vo-9y3">
                                         <rect key="frame" x="0.0" y="0.0" width="264" height="30"/>
@@ -346,17 +375,17 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Yx-mj-366">
-                                <rect key="frame" x="40" y="460" width="334" height="90"/>
+                                <rect key="frame" x="40" y="486" width="334" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="C2q-2f-a4m"/>
+                                    <constraint firstAttribute="height" constant="70" id="C2q-2f-a4m"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Zp-rR-soG">
-                                <rect key="frame" x="40" y="425" width="334" height="30"/>
+                                <rect key="frame" x="40" y="451" width="334" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="분야 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BU-aG-Dwi">
                                         <rect key="frame" x="0.0" y="0.0" width="264" height="30"/>
@@ -384,7 +413,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yTm-bL-Eck">
-                                <rect key="frame" x="40" y="560" width="334" height="30"/>
+                                <rect key="frame" x="40" y="566" width="334" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bA-nS-ijd">
                                         <rect key="frame" x="0.0" y="0.0" width="264" height="30"/>
@@ -412,10 +441,10 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ooN-0f-UjR">
-                                <rect key="frame" x="40" y="595" width="334" height="90"/>
+                                <rect key="frame" x="40" y="601" width="334" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="H4k-FI-4Ad"/>
+                                    <constraint firstAttribute="height" constant="70" id="H4k-FI-4Ad"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -462,10 +491,11 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="currentPwTextField" destination="jsb-ob-OZc" id="pwJ-JD-Z3O"/>
+                        <outlet property="newPwTextField" destination="bbd-rD-cn6" id="JrM-11-Uav"/>
                         <outlet property="nicknameTextField" destination="8U9-0L-AQP" id="OIq-O7-CZS"/>
                         <outlet property="plusPhotoButton" destination="nmS-EB-GCA" id="7u8-AT-hbA"/>
-                        <outlet property="pwCheckTextField" destination="TUC-wF-8kg" id="gJv-cX-Jgc"/>
-                        <outlet property="pwTextField" destination="bbd-rD-cn6" id="j6y-rb-h1W"/>
+                        <outlet property="pwCheckTextField" destination="DxA-Fu-3hu" id="wxa-xJ-rG7"/>
                         <outletCollection property="valueTextView" destination="mlO-bw-b6U" collectionClass="NSMutableArray" id="fLh-Rb-HYE"/>
                         <outletCollection property="valueTextView" destination="9Yx-mj-366" collectionClass="NSMutableArray" id="NcB-O8-3sh"/>
                         <outletCollection property="valueTextView" destination="ooN-0f-UjR" collectionClass="NSMutableArray" id="LyB-q7-Bfp"/>
@@ -477,8 +507,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="coin.png" width="21.75" height="21.75"/>
         <image name="logout.png" width="21" height="21"/>
-        <image name="payment.png" width="23.200000762939453" height="23.200000762939453"/>
         <image name="post.png" width="21.75" height="21.75"/>
         <image name="profile.png" width="768" height="768"/>
         <image name="profile_edit.png" width="21.75" height="21.75"/>

@@ -38,7 +38,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                 print("login fail")
             }
         }
-        
     }
     
     @IBAction func myExit(_ sender: UIStoryboardSegue) {

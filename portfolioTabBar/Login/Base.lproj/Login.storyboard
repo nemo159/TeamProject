@@ -41,7 +41,7 @@
         <!--Login-->
         <scene sceneID="PTY-4A-Z0d">
             <objects>
-                <viewController title="Login" id="Ibi-2k-o7s" customClass="LoginViewController" customModule="portfolioTabBar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ibi-2k-o7s" customClass="LoginViewController" customModule="portfolioTabBar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h0x-jL-0cC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,6 +133,42 @@
                                     <constraint firstAttribute="height" constant="48" id="uaK-x6-ZGg"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOe-tQ-2d3">
+                                <rect key="frame" x="57" y="740" width="300" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPO-FX-waP">
+                                        <rect key="frame" x="8" y="8" width="180" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="T0i-1S-7xD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeY-eN-cGV">
+                                        <rect key="frame" x="196" y="8" width="104" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="NV1-Qw-n1H"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SDMiSaeng" family="Sandoll MiSaeng" pointSize="23"/>
+                                        <state key="normal" title="FInd Password"/>
+                                        <connections>
+                                            <segue destination="Bqj-EV-pcv" kind="push" id="Lln-9h-sVa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="4LA-6n-ltX"/>
+                                    <constraint firstItem="OPO-FX-waP" firstAttribute="leading" secondItem="cOe-tQ-2d3" secondAttribute="leading" constant="8" id="AUr-aV-ywg"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZeY-eN-cGV" secondAttribute="bottom" constant="8" id="BCY-3r-fht"/>
+                                    <constraint firstItem="OPO-FX-waP" firstAttribute="top" secondItem="cOe-tQ-2d3" secondAttribute="top" constant="8" id="I4m-QS-TsL"/>
+                                    <constraint firstAttribute="bottom" secondItem="OPO-FX-waP" secondAttribute="bottom" constant="8" id="KR0-PS-MSM"/>
+                                    <constraint firstAttribute="height" constant="56" id="m1P-UH-FGZ"/>
+                                    <constraint firstItem="ZeY-eN-cGV" firstAttribute="leading" secondItem="OPO-FX-waP" secondAttribute="trailing" constant="8" id="m58-Uj-lgg"/>
+                                    <constraint firstItem="ZeY-eN-cGV" firstAttribute="top" secondItem="cOe-tQ-2d3" secondAttribute="top" constant="8" id="vdu-1K-JJm"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -143,6 +179,8 @@
                             <constraint firstItem="mD8-64-KBN" firstAttribute="bottom" secondItem="D0A-JM-qx8" secondAttribute="bottom" id="MLh-ed-0v9"/>
                             <constraint firstItem="mD8-64-KBN" firstAttribute="centerX" secondItem="D0A-JM-qx8" secondAttribute="centerX" id="R2q-7f-JBP"/>
                             <constraint firstItem="ZAu-fl-xr1" firstAttribute="leading" secondItem="D0A-JM-qx8" secondAttribute="leading" constant="40" id="UO6-s3-LQ6"/>
+                            <constraint firstItem="mD8-64-KBN" firstAttribute="top" secondItem="cOe-tQ-2d3" secondAttribute="bottom" constant="10" id="bvS-xP-kkA"/>
+                            <constraint firstItem="cOe-tQ-2d3" firstAttribute="centerX" secondItem="D0A-JM-qx8" secondAttribute="centerX" id="lkM-4Z-yIR"/>
                             <constraint firstItem="NMk-Bc-Cbf" firstAttribute="top" secondItem="ZAu-fl-xr1" secondAttribute="bottom" constant="10" id="obh-rn-jDN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D0A-JM-qx8"/>
@@ -158,6 +196,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKf-1e-lJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="713" y="-716"/>
+        </scene>
+        <!--Ind Password View Controller-->
+        <scene sceneID="HgJ-WI-WXH">
+            <objects>
+                <viewController storyboardIdentifier="FIndPasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Bqj-EV-pcv" customClass="FIndPasswordViewController" customModule="portfolioTabBar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2XH-9F-F2U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 찾기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lg-lt-v59">
+                                <rect key="frame" x="0.0" y="118" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JDi-9F-Qbk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SDMiSaeng" family="Sandoll MiSaeng" pointSize="33"/>
+                                <color key="textColor" red="0.28930649161338806" green="0.40931198000907898" blue="0.96475690603256226" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CAk-OH-QAE">
+                                <rect key="frame" x="40" y="218" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kYB-Ta-rfX"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8V-Pw-ldb">
+                                <rect key="frame" x="188.5" y="293" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="ffQ-gq-BKv"/>
+                                    <constraint firstAttribute="width" constant="37" id="hDo-ua-mNj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SDMiSaeng" family="Sandoll MiSaeng" pointSize="25"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="sendButtonPressed:" destination="Bqj-EV-pcv" eventType="touchUpInside" id="KoE-Zw-82B"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CAk-OH-QAE" firstAttribute="top" secondItem="8lg-lt-v59" secondAttribute="bottom" constant="50" id="IWh-el-S6O"/>
+                            <constraint firstItem="d33-lp-dP2" firstAttribute="trailing" secondItem="CAk-OH-QAE" secondAttribute="trailing" constant="40" id="Iw3-MR-aR1"/>
+                            <constraint firstItem="CAk-OH-QAE" firstAttribute="leading" secondItem="d33-lp-dP2" secondAttribute="leading" constant="40" id="SMp-wj-m7T"/>
+                            <constraint firstItem="d33-lp-dP2" firstAttribute="trailing" secondItem="8lg-lt-v59" secondAttribute="trailing" id="XLX-SJ-ZKd"/>
+                            <constraint firstItem="g8V-Pw-ldb" firstAttribute="centerX" secondItem="d33-lp-dP2" secondAttribute="centerX" id="Zfc-LO-2tT"/>
+                            <constraint firstItem="g8V-Pw-ldb" firstAttribute="top" secondItem="CAk-OH-QAE" secondAttribute="bottom" constant="25" id="gNN-uz-nn0"/>
+                            <constraint firstItem="8lg-lt-v59" firstAttribute="top" secondItem="d33-lp-dP2" secondAttribute="top" constant="30" id="izD-zq-GDW"/>
+                            <constraint firstItem="8lg-lt-v59" firstAttribute="centerX" secondItem="d33-lp-dP2" secondAttribute="centerX" id="kLr-zl-f1u"/>
+                            <constraint firstItem="8lg-lt-v59" firstAttribute="leading" secondItem="d33-lp-dP2" secondAttribute="leading" id="zzi-ba-1AQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="d33-lp-dP2"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dpi-YQ-bjV"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="CAk-OH-QAE" id="Lgd-iy-L1r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uon-pL-tCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1549" y="-717"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NIl-yI-Ijo">
