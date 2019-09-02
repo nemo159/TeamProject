@@ -14,7 +14,7 @@ class SettingController: UIViewController, GIDSignInUIDelegate {
     @IBOutlet var profileImageView : CustomImageView!
     @IBOutlet var nameLabel : UILabel!
     @IBOutlet var nicknameLabel : UILabel!
-    @IBOutlet weak var pointLabel: UILabel!
+    @IBOutlet weak var pointButton: UIButton!
     @IBOutlet weak var transformBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var postButton: UIButton!

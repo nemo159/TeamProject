@@ -57,6 +57,7 @@ class ChangeUserInfoViewController: UIViewController, UINavigationControllerDele
         let pwCheck = pwCheckTextField.text
         let uid = user?.uid
         
+        //Storage에서 기존 이미지 파일 삭제
         let url = user?.profileImageUrl
         let storageRef = Storage.storage().reference(forURL: url!)
         storageRef.delete { error in
@@ -66,7 +67,8 @@ class ChangeUserInfoViewController: UIViewController, UINavigationControllerDele
                 print("delete success??????????????????????")
             }
         }
-    
+        
+        //Storage와 Database에 새로운 이미지 넣기
         if let profileImages: UIImage = profileImage {
             Storage.storage().uploadUserProfileImage(profileImage: profileImages, completion: { (profileImageUrl) in
               Database.database().reference().child("users").child(uid!).updateChildValues(["profileImageUrl": profileImageUrl])
@@ -97,7 +99,9 @@ class ChangeUserInfoViewController: UIViewController, UINavigationControllerDele
         plusPhotoButton.setBorderColor(width: 0.5, color: myColor, corner: 140 / 2)
         //textView
         for i in 0..<3 {
-            valueTextView[i].setBorderColor(width: 0.5, color: myColor)
+            valueTextView[i].layer.borderWidth = 0.3
+            valueTextView[i].layer.cornerRadius = 5
+            valueTextView[i].layer.borderColor = UIColor.darkGray.cgColor
             valueTextView[i].isEditable = false
         }
         //textField

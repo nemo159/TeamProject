@@ -11,7 +11,7 @@ import Firebase
 import GoogleSignIn
 
 @UIApplicationMain
-//Google Login을 위해 GIDSignInDelegate 추가
+//Google Login을 위해 GIDSignInDelegate 추가 -> Google Api에서 OAuth 설정도 해야함
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
 
     var window: UIWindow?

@@ -69,33 +69,33 @@
                                             <segue destination="ZNa-ET-oQK" kind="push" id="5gw-rU-el2"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cff-lH-iCQ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQS-hs-Mn1">
                                         <rect key="frame" x="356" y="8" width="50" height="42"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="YFK-mr-4KX"/>
+                                            <constraint firstAttribute="width" constant="50" id="hqq-0w-nHH"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <state key="normal">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="0k8-GP-RvI"/>
-                                    <constraint firstItem="Tx6-44-iMK" firstAttribute="top" secondItem="cff-lH-iCQ" secondAttribute="bottom" constant="10" id="3aW-su-cad"/>
-                                    <constraint firstAttribute="trailing" secondItem="cff-lH-iCQ" secondAttribute="trailing" constant="8" id="6CP-JZ-RPp"/>
                                     <constraint firstItem="Ijh-Hj-Og8" firstAttribute="leading" secondItem="Md2-us-zUL" secondAttribute="trailing" constant="20" id="7wA-EY-dNE"/>
                                     <constraint firstItem="Ijh-Hj-Og8" firstAttribute="top" secondItem="JoF-hH-YTu" secondAttribute="bottom" constant="10" id="99k-Ek-0I1"/>
+                                    <constraint firstItem="xQS-hs-Mn1" firstAttribute="top" secondItem="etd-Cl-7ka" secondAttribute="top" constant="8" id="AN6-Ob-Pk1"/>
                                     <constraint firstAttribute="bottom" secondItem="Tx6-44-iMK" secondAttribute="bottom" constant="10" id="H5H-B3-cYs"/>
-                                    <constraint firstItem="cff-lH-iCQ" firstAttribute="top" secondItem="etd-Cl-7ka" secondAttribute="top" constant="8" id="IiP-Z3-fJy"/>
                                     <constraint firstItem="Md2-us-zUL" firstAttribute="leading" secondItem="etd-Cl-7ka" secondAttribute="leading" constant="10" id="Jmg-5U-4gK"/>
                                     <constraint firstItem="Tx6-44-iMK" firstAttribute="leading" secondItem="Ijh-Hj-Og8" secondAttribute="trailing" constant="30" id="Kdq-Tc-lB4"/>
                                     <constraint firstAttribute="bottom" secondItem="Md2-us-zUL" secondAttribute="bottom" constant="8" id="NfE-k3-3Tt"/>
                                     <constraint firstItem="JoF-hH-YTu" firstAttribute="top" secondItem="etd-Cl-7ka" secondAttribute="top" constant="20" id="SG1-Xo-6go"/>
+                                    <constraint firstItem="Tx6-44-iMK" firstAttribute="top" secondItem="xQS-hs-Mn1" secondAttribute="bottom" constant="10" id="TVY-7E-st0"/>
                                     <constraint firstItem="Tx6-44-iMK" firstAttribute="leading" secondItem="JoF-hH-YTu" secondAttribute="trailing" constant="50" id="Unr-qN-kDD"/>
                                     <constraint firstItem="Tx6-44-iMK" firstAttribute="top" secondItem="etd-Cl-7ka" secondAttribute="top" constant="60" id="Vdf-6X-bbi"/>
                                     <constraint firstAttribute="trailing" secondItem="Tx6-44-iMK" secondAttribute="trailing" constant="8" id="Vkm-FF-o6K"/>
                                     <constraint firstItem="JoF-hH-YTu" firstAttribute="leading" secondItem="Md2-us-zUL" secondAttribute="trailing" constant="20" id="Zwe-uZ-P01"/>
+                                    <constraint firstAttribute="trailing" secondItem="xQS-hs-Mn1" secondAttribute="trailing" constant="8" id="a5l-2y-2zG"/>
                                     <constraint firstAttribute="bottom" secondItem="Ijh-Hj-Og8" secondAttribute="bottom" constant="10" id="oGx-ky-40K"/>
                                     <constraint firstItem="Md2-us-zUL" firstAttribute="top" secondItem="etd-Cl-7ka" secondAttribute="top" constant="8" id="qDF-LR-alh"/>
                                 </constraints>
@@ -223,7 +223,7 @@
                     <connections>
                         <outlet property="nameLabel" destination="JoF-hH-YTu" id="t7M-2Z-2fH"/>
                         <outlet property="nicknameLabel" destination="Ijh-Hj-Og8" id="0Xf-zy-aR3"/>
-                        <outlet property="pointLabel" destination="cff-lH-iCQ" id="Y1G-Vg-ko7"/>
+                        <outlet property="pointButton" destination="xQS-hs-Mn1" id="nEx-g1-ErR"/>
                         <outlet property="postButton" destination="tHT-WD-OOf" id="vyD-32-t0S"/>
                         <outlet property="postImageView" destination="1Ie-1g-EjE" id="kmx-Sb-UWn"/>
                         <outlet property="profileImageView" destination="Md2-us-zUL" id="YFE-uY-SQM"/>
@@ -358,7 +358,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WoM-L8-Him">
                                         <rect key="frame" x="294" y="0.0" width="40" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="&gt;"/>
+                                        <state key="normal" title="&gt;">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -396,7 +398,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQ5-CB-sss">
                                         <rect key="frame" x="294" y="0.0" width="40" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="&gt;"/>
+                                        <state key="normal" title="&gt;">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -424,7 +428,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEh-we-uTB">
                                         <rect key="frame" x="294" y="0.0" width="40" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="&gt;"/>
+                                        <state key="normal" title="&gt;">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
